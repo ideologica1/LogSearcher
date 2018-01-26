@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="mydb@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="mydb">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sys"/>
+    <table id="7" parent="2" name="createdfiles"/>
+    <table id="8" parent="2" name="dateintervals"/>
+    <table id="9" parent="2" name="groupes"/>
+    <table id="10" parent="2" name="groupmembers"/>
+    <table id="11" parent="2" name="groups"/>
+    <table id="12" parent="2" name="user"/>
+    <table id="13" parent="2" name="user_group"/>
+    <table id="14" parent="2" name="users"/>
+    <column id="15" parent="7" name="FileName">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="7" name="Extension">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="17" parent="7" name="RegularExpression">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="18" parent="7" name="Location">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="19" parent="7" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>FileName</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="20" parent="8" name="FileName">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="21" parent="8" name="DateFrom">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="22" parent="8" name="DateTo">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <index id="23" parent="8" name="FileName">
+      <ColNames>FileName</ColNames>
+    </index>
+    <foreign-key id="24" parent="8" name="dateintervals_ibfk_1">
+      <ColNames>FileName</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>createdfiles</RefTableName>
+      <RefColNames>FileName</RefColNames>
+    </foreign-key>
+    <column id="25" parent="9" name="G_NAME">
+      <Position>1</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="9" name="G_DESCRIPTION">
+      <Position>2</Position>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <key id="27" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>G_NAME</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="28" parent="10" name="G_NAME">
+      <Position>1</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="10" name="G_MEMBER">
+      <Position>2</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="30" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>G_NAME
+G_MEMBER</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="31" parent="10" name="FK1_GROUPMEMBERS">
+      <ColNames>G_NAME</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>groupes</RefTableName>
+      <RefColNames>G_NAME</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="32" parent="11" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="33" parent="11" name="Name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="11" name="Description">
+      <Position>3</Position>
+      <DataType>varchar(300)|0</DataType>
+    </column>
+    <key id="35" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="36" parent="12" name="U_NAME">
+      <Position>1</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="12" name="U_PASSWORD">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="12" name="U_DESCRIPTION">
+      <Position>3</Position>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <key id="39" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>U_NAME</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="40" parent="13" name="GROUP_ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="13" name="USER_ID">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="42" parent="13" name="GROUP_ID">
+      <ColNames>GROUP_ID</ColNames>
+    </index>
+    <index id="43" parent="13" name="USER_ID">
+      <ColNames>USER_ID</ColNames>
+    </index>
+    <foreign-key id="44" parent="13" name="user_group_ibfk_1">
+      <ColNames>GROUP_ID</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>groups</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="45" parent="13" name="user_group_ibfk_2">
+      <ColNames>USER_ID</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>users</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="46" parent="14" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="47" parent="14" name="Password">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="48" parent="14" name="USERNAME">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <key id="49" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
