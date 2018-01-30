@@ -1,17 +1,17 @@
 package ru.siblion.util;
 
 public enum Errors {
-    FROM_EXCEED_TO(1, "Beginning of the date interval exceed end."),
+    FROM_EXCEED_TO(1, "Начало временного интервала превышает конец."),
 
-    FROM_EXCEED_PRESENT(18, "Beginning of the date interval exceed present time."),
+    FROM_EXCEED_PRESENT(18, "Начало временного интервала превышает текущий момент времени."),
 
-    TIME_FORMAT(19, "Incorrect time format."),
+    TIME_FORMAT(19, "Неверный формат даты"),
 
-    INPUT_PARAMETERS(37, "Missed mandatory parameters."),
+    INPUT_PARAMETERS(37, "Не все обязательные поля заполнены."),
 
-    EXTENSION_ABSENCE(3701, "Missed asynchronous method file extension."),
+    EXTENSION_ABSENCE(3701, "Не указано расширение запрошенного файла."),
 
-    LOGS_LOCATION(44, "Incorrect resource name.");
+    LOGS_LOCATION(44, "Неверно указано название сервера, домена или кластера.");
 
 
     private final long errorCode;
@@ -26,7 +26,7 @@ public enum Errors {
         return errorCode;
     }
 
-    public static String getDescriptionByCode(long errorCode) {
+    public static String getErrorDescriptionByCode(long errorCode) {
         String temp = null;
         for (Errors errors : Errors.values()) {
             if (errors.getErrorCode() == errorCode) {

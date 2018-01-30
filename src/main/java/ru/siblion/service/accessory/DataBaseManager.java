@@ -2,8 +2,8 @@ package ru.siblion.service.accessory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.siblion.service.entity.request.SearchInfo;
-import ru.siblion.service.entity.request.SignificantDateInterval;
+import ru.siblion.service.model.request.SearchInfo;
+import ru.siblion.service.model.request.SignificantDateInterval;
 
 import javax.sql.DataSource;
 import java.io.Serializable;
@@ -111,5 +111,13 @@ public class DataBaseManager implements Serializable {
         }
         closeConnection();
         return existingFilesDateIntervals;
+    }
+
+    public DataSource getDataSource() {
+        return dataSource;
+    }
+
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 }

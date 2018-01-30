@@ -1,6 +1,6 @@
 package ru.siblion.util;
 
-import ru.siblion.service.entity.response.ResultLogs;
+import ru.siblion.service.model.response.ResultLogs;
 
 import java.util.Comparator;
 

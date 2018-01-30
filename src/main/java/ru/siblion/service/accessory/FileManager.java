@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
 import org.xml.sax.SAXException;
-import ru.siblion.service.entity.XMLModel;
-import ru.siblion.service.entity.request.SearchInfo;
-import ru.siblion.service.entity.request.SignificantDateInterval;
-import ru.siblion.service.entity.response.CorrectionCheckResult;
+import ru.siblion.service.model.XMLModel;
+import ru.siblion.service.model.request.SearchInfo;
+import ru.siblion.service.model.request.SignificantDateInterval;
+import ru.siblion.service.model.response.CorrectionCheckResult;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

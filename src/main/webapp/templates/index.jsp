@@ -33,15 +33,15 @@
             <img alt="IT god" src="resources/images/oracle.png" width="60%" />
         </div>
     </div>
-    <sf:form method="POST" modelAttribute="searchInfo">
+    <sf:form method="POST" modelAttribute="searchInfoService">
         <div class="form-group">
             <label for="regEx">Введите регулярное выражение: </label>
             <sf:input type="input" class="form-control w-25 border-dark" id="regEx" aria-describedby="emailHelp"
-                      placeholder="Регулярное выражение" path="regularExpression"/>
+                      placeholder="Регулярное выражение" path="searchInfo.regularExpression"/>
         </div>
         <div class="form-group">
             <label for="dateintervals">Выберите временные промежутки: </label>
-            <div class="row w-50" id="dateintervals">
+            <div class="row w-75" id="dateintervals">
                 <div class="col">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -50,7 +50,8 @@
                         <sf:input type="text" class="form-control border-dark" aria-describedby="basic-addon1"
                                   placeholder="дд-мм-гггг чч-мм-сс"
                                   pattern="[0-9]{2}-[0-9]{2}-[0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2}"
-                                  path="significantDateInterval.dateFromString"/>
+                                  path="dateInterval.dateFromString"/>
+
                     </div>
                 </div>
                 <div class="col">
@@ -61,45 +62,49 @@
                         <sf:input type="text" class="form-control border-dark" aria-describedby="basic-addon2"
                                   placeholder="дд-мм-гггг чч-мм-сс"
                                   pattern="[0-9]{2}-[0-9]{2}-[0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2}"
-                                  path="significantDateInterval.dateToString"/>
+                                  path="dateInterval.dateToString"/>
+
                     </div>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-danger" id="delete">Удалить</button>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <label for="location">Выберите расположение файла: </label>
             <sf:input type="input" class="form-control w-25 border-dark" id="location" aria-describedby="emailHelp"
-                      placeholder="Название сервера, кластера или домена" path="location"/>
+                      placeholder="Название сервера, кластера или домена" path="searchInfo.location"/>
         </div>
 
         <div class="form-group">
             <label>Сохранять ли найденные логи в файл: </label>
             <div class="form-check form-check-inline">
                 <sf:radiobutton class="form-check-input" name="inlineRadioOptions" id="optionNo" value="false"
-                                path="realization"/>
+                                path="searchInfo.realization"/>
                 <label class="form-check-label" for="optionNo">Нет</label>
             </div>
             <div class="form-check form-check-inline">
                 <sf:radiobutton class="form-check-input" name="inlineRadioOptions" id="optionYes" value="true"
-                                path="realization"/>
+                                path="searchInfo.realization"/>
                 <label class="form-check-label" for="optionYes">Да</label>
             </div>
         </div>
 
 
-        <label for="fileextension">Выберите расширение файла: </label>
+        <label for="extension">Выберите расширение файла: </label>
         <div class="form-row w-50">
             <div class="col">
                 <div class="form-group">
 
-                    <sf:select class="form-control w-50 border-dark" id="fileextension" path="fileExtention">
+                    <sf:select class="form-control w-50 border-dark" id="extension" path="searchInfo.fileExtention">
                         <sf:option value=""/>
                         <sf:option value="XML"/>
                         <sf:option value="PDF"/>
-                        <sf:option value="XML"/>
-                        <sf:option value="XML"/>
-                        <sf:option value="XML"/>
-                        <sf:option value="XML"/>
+                        <sf:option value="RTF"/>
+                        <sf:option value="HTML"/>
+                        <sf:option value="DOC"/>
+                        <sf:option value="LOG"/>
                     </sf:select>
                 </div>
             </div>

@@ -4,17 +4,23 @@
     <title>
         Authorization
     </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
     <link rel="shortcut icon" href="resources/images/favicon.ico" />
 </head>
+
 <body>
-    <form action="j_security_check" method="post" class="form-container">
-        <div class="form-title"><h2>Авторизуйтесь</h2></div>
-        <div class="form-title">Имя</div><input id="j_username" type="text" name="j_username" class="form-field" /><br />
-        <div class="form-title">Пароль</div><input id="j_password" type="password" name="j_password" value="" class="form-field" /><br />
-        <div class="submit-container">
-            <input type="submit" value="Вход" class="submit-button" />
-        </div>
-    </form>
+<form action="j_security_check" method="post" class="form-container">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
+</form>
 </body>
 
 </html>

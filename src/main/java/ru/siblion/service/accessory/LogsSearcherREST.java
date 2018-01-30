@@ -4,11 +4,10 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.xml.sax.SAXException;
-import ru.siblion.service.entity.request.SearchInfo;
-import ru.siblion.service.entity.response.LogSearchResult;
-import ru.siblion.service.entity.response.SearchInfoResult;
+import ru.siblion.service.model.request.SearchInfo;
+import ru.siblion.service.model.response.LogSearchResult;
+import ru.siblion.service.model.response.SearchInfoResult;
 
-import javax.jws.WebMethod;
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;

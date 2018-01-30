@@ -4,13 +4,12 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import ru.siblion.util.ClientInputDataChecker;
-import ru.siblion.util.SearchInfoService;
-import ru.siblion.util.ResultRepresentation;
-import ru.siblion.service.entity.request.SearchInfo;
-import ru.siblion.service.entity.response.CorrectionCheckResult;
-import ru.siblion.service.entity.response.LogSearchResult;
-import ru.siblion.service.entity.response.SearchInfoResult;
+import ru.siblion.service.accessory.SearchInfoService;
+import ru.siblion.util.InputDataValidator;
+import ru.siblion.service.model.request.SearchInfo;
+import ru.siblion.service.model.response.CorrectionCheckResult;
+import ru.siblion.service.model.response.LogSearchResult;
+import ru.siblion.service.model.response.SearchInfoResult;
 
 @Component
 public class Client {
@@ -22,16 +21,13 @@ public class Client {
   private CorrectionCheckResult correctionCheckResult;
 
   @Autowired
-  private ResultRepresentation resultRepresentation;
-
-  @Autowired
   private SearchInfoService searchInfoService;
 
   @Autowired
   private LogSearchResult logSearchResult;
 
   @Autowired
-  private ClientInputDataChecker clientInputDataChecker;
+  private InputDataValidator inputDataValidator;
 
 
   @Autowired
@@ -41,7 +37,6 @@ public class Client {
     setDateIntervals();
     corectionCheck(searchInfo);
     if (isErrorOccured(correctionCheckResult)) {
-      resultRepresentation.showMessage(logSearchResult);
     }
     else {
       if (searchInfo.getRealization()) {
@@ -50,7 +45,6 @@ public class Client {
       }
       else {
         logSearchResult = logSearchAsync(searchInfo);
-        resultRepresentation.showMessage(logSearchResult);
       }
 
     }
@@ -70,7 +64,7 @@ public class Client {
   }
 
   private void corectionCheck(SearchInfo searchInfo) throws ConfigurationException {
-    clientInputDataChecker.correctionCheck(searchInfo);
+    inputDataValidator.correctionCheck(searchInfo);
   }
 
   private boolean isErrorOccured(CorrectionCheckResult correctionCheckResult) {

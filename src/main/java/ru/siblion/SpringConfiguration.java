@@ -3,11 +3,8 @@ package ru.siblion;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.jndi.JndiTemplate;
 import org.springframework.web.context.annotation.RequestScope;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import ru.siblion.service.entity.request.SignificantDateInterval;
+import org.springframework.web.context.annotation.SessionScope;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -17,13 +14,8 @@ import javax.sql.DataSource;
 @ComponentScan
 public class SpringConfiguration {
 
-    @Bean
-    public SignificantDateInterval significantDateInterval() {
-        return new SignificantDateInterval();
-    }
-
-    @Bean
-    @RequestScope
+    @Bean(destroyMethod = "")
+    @SessionScope
     public DataSource dataSource() throws Exception {
         Context context = new InitialContext();
         DataSource dataSource = (DataSource) context.lookup("MyDataSource");
