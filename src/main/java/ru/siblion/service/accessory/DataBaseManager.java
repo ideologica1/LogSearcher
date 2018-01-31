@@ -2,6 +2,8 @@ package ru.siblion.service.accessory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.annotation.SessionScope;
 import ru.siblion.service.model.request.SearchInfo;
 import ru.siblion.service.model.request.SignificantDateInterval;
 
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@RequestScope
 public class DataBaseManager implements Serializable {
 
     @Autowired
@@ -113,11 +116,30 @@ public class DataBaseManager implements Serializable {
         return existingFilesDateIntervals;
     }
 
+    public String getUsername() throws SQLException {
+        setConnection();
+        String getName = "select U_NAME, U_PASSWORD, enabled from user where U_NAME=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(getName);
+        preparedStatement.setString(1, "siblion");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        StringBuilder stringBuilder = new StringBuilder();
+        while (resultSet.next()) {
+            stringBuilder.append(resultSet.getString(1));
+            stringBuilder.append(resultSet.getString(2));
+            stringBuilder.append(resultSet.getString(3));
+        }
+        closeConnection();
+        return stringBuilder.toString();
+    }
+
     public DataSource getDataSource() {
         return dataSource;
     }
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public DataBaseManager() {
     }
 }

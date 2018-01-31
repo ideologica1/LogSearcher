@@ -1,0 +1,10 @@
+<fop version="1.0">
+    <renderers>
+        <renderer mime="application/pdf">
+            <fonts>
+                <!-- register all the fonts found in a directory -->
+                <directory>C:\Windows\Fonts</directory>
+            </fonts>
+        </renderer>
+    </renderers>
+</fop>

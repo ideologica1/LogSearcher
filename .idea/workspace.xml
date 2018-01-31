@@ -7,92 +7,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1778dcd0-6a79-48c9-aa2c-8000c5991c8f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/LogSearchWS.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/SearchInfoController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/util/ResultRepresentation.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/util/SearchInfoService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/results.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/accessory/LogSearchWS.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/controller/DataController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/controller/IndexController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/controller/SearchInfoController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/entity/XMLModel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/entity/request/SearchInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/entity/request/SignificantDateInterval.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/entity/response/CorrectionCheckResult.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/entity/response/LogSearchResult.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/entity/response/ResultLogs.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/entity/response/SearchInfoResult.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/util/ClientInputDataChecker.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/util/LogoutBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/util/SearchInfoService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Spring/results.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/accessory/LogSearchWS.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/controller/DataController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/controller/IndexController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/controller/SearchInfoController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/entity/XMLModel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/entity/request/SearchInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/entity/request/SignificantDateInterval.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/entity/response/CorrectionCheckResult.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/entity/response/LogSearchResult.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/entity/response/ResultLogs.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/entity/response/SearchInfoResult.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/util/ClientInputDataChecker.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/util/LogoutBean.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/util/SearchInfoService.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/DataController.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/MainFormController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/IndexController.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/IndexPageController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/entity/XMLModel.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/model/XMLModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/entity/request/SearchInfo.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/model/request/SearchInfo.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/entity/request/SignificantDateInterval.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/model/request/SignificantDateInterval.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/entity/response/CorrectionCheckResult.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/model/response/CorrectionCheckResult.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/entity/response/LogSearchResult.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/model/response/LogSearchResult.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/entity/response/ResultLogs.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/model/response/ResultLogs.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/entity/response/SearchInfoResult.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/model/response/SearchInfoResult.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/util/ClientInputDataChecker.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/util/InputDataValidator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/util/LogoutBean.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/util/LogoutManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Spring.war" afterPath="$PROJECT_DIR$/target/Spring.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/SpringConfiguration.class" afterPath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/SpringConfiguration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/client/rest/Client.class" afterPath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/client/rest/Client.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/accessory/DataBaseManager.class" afterPath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/accessory/DataBaseManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/accessory/FileManager.class" afterPath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/accessory/FileManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/accessory/LogSearchResultService.class" afterPath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/accessory/LogSearchResultService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/accessory/LogsSearcherREST.class" afterPath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/accessory/LogsSearcherREST.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/accessory/SearchResultManager.class" afterPath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/service/accessory/SearchResultManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/util/Errors.class" afterPath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/util/Errors.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/util/LogsComparator.class" afterPath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/util/LogsComparator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/util/ResultRepresentation.class" afterPath="$PROJECT_DIR$/target/Spring/WEB-INF/classes/ru/siblion/util/ResultRepresentation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/SpringConfiguration.class" afterPath="$PROJECT_DIR$/target/classes/ru/siblion/SpringConfiguration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/client/rest/Client.class" afterPath="$PROJECT_DIR$/target/classes/ru/siblion/client/rest/Client.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/accessory/DataBaseManager.class" afterPath="$PROJECT_DIR$/target/classes/ru/siblion/service/accessory/DataBaseManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/accessory/FileManager.class" afterPath="$PROJECT_DIR$/target/classes/ru/siblion/service/accessory/FileManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/accessory/LogSearchResultService.class" afterPath="$PROJECT_DIR$/target/classes/ru/siblion/service/accessory/LogSearchResultService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/accessory/LogsSearcherREST.class" afterPath="$PROJECT_DIR$/target/classes/ru/siblion/service/accessory/LogsSearcherREST.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/service/accessory/SearchResultManager.class" afterPath="$PROJECT_DIR$/target/classes/ru/siblion/service/accessory/SearchResultManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/util/Errors.class" afterPath="$PROJECT_DIR$/target/classes/ru/siblion/util/Errors.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/util/LogsComparator.class" afterPath="$PROJECT_DIR$/target/classes/ru/siblion/util/LogsComparator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/siblion/util/ResultRepresentation.class" afterPath="$PROJECT_DIR$/target/classes/ru/siblion/util/ResultRepresentation.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_3_1_0_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_crypto_3_1_0_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_0_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_0_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_0_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_0_2_RELEASE.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/LogsFinderSpring_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/LogsFinderSpring_war_exploded.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/95fcab6b-0e3d-4f63-ad35-c13ed9f9b9c0.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/95fcab6b-0e3d-4f63-ad35-c13ed9f9b9c0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LogsFinderSpring.iml" afterPath="$PROJECT_DIR$/LogsFinderSpring.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/SpringConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/SpringConfiguration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/client/rest/Client.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/client/rest/Client.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/DataBaseManager.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/DataBaseManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/FileManager.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/FileManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/LogSearchResultService.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/LogSearchResultService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/LogsSearcherREST.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/LogsSearcherREST.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/SearchResultManager.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/SearchResultManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/util/Errors.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/util/Errors.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/util/LogsComparator.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/util/LogsComparator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spitter-servlet.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spitter-servlet.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/OutdatedFilesCleaner.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/OutdatedFilesCleaner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/IndexPageController.java" afterPath="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/IndexPageController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spitter-security.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spitter-security.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/templates/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/templates/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/templates/login.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/templates/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Spring/WEB-INF/spitter-servlet.xml" afterPath="$PROJECT_DIR$/target/Spring/WEB-INF/spitter-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Spring/templates/index.jsp" afterPath="$PROJECT_DIR$/target/Spring/templates/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -111,38 +46,84 @@
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <expand />
+    <expand>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="springDB" type="e3449647:DbNodeDescriptor" />
+      </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="springDB" type="e3449647:DbNodeDescriptor" />
+        <item name="springdb" type="e3449647:DbNodeDescriptor" />
+      </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="springDB" type="e3449647:DbNodeDescriptor" />
+        <item name="springdb" type="e3449647:DbNodeDescriptor" />
+        <item name="user_roles" type="e3449647:DbNodeDescriptor" />
+      </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="springDB" type="e3449647:DbNodeDescriptor" />
+        <item name="springdb" type="e3449647:DbNodeDescriptor" />
+        <item name="users" type="e3449647:DbNodeDescriptor" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="MainFormController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/MainFormController.java">
+      <file leaf-file-name="SecurityConfiguration.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/SecurityConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="676">
-              <caret line="44" column="34" lean-forward="false" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+            <state relative-caret-position="-431">
+              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1851#1852#0" expanded="true" />
+                <element signature="e#1884#1885#0" expanded="true" />
+                <element signature="e#1940#1941#0" expanded="true" />
+                <element signature="e#1984#1985#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="544">
+              <caret line="38" column="15" lean-forward="false" selection-start-line="38" selection-start-column="15" selection-end-line="38" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/client/rest/Client.java">
+      <file leaf-file-name="spitter-security.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spitter-security.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-849">
-              <caret line="38" column="48" lean-forward="false" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+            <state relative-caret-position="106">
+              <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpringConfiguration.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/SpringConfiguration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="350">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogsSearcherREST.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/LogsSearcherREST.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6">
+              <caret line="41" column="26" lean-forward="false" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -150,74 +131,58 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+      <file leaf-file-name="DataBaseManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/DataBaseManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spitter-servlet.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spitter-servlet.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="21" column="11" lean-forward="false" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LogsComparator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/util/LogsComparator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/templates/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-75">
-              <caret line="99" column="101" lean-forward="false" selection-start-line="99" selection-start-column="101" selection-end-line="99" selection-end-column="101" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/templates/login.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="650">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="156">
+              <caret line="24" column="23" lean-forward="false" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
               <folding>
-                <element signature="n#style#0;n#button#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1517406383460" expanded="true" signature="1182:1318" ph="INSERT INTO createdfiles... " />
+                <marker date="1517406383460" expanded="true" signature="1730:1842" ph="INSERT INTO dateintervals... " />
+                <marker date="1517406383460" expanded="true" signature="2466:2531" ph="DELETE FROM " />
+                <marker date="1517406383460" expanded="true" signature="2763:2827" ph="DELETE FROM " />
+                <marker date="1517406383460" expanded="true" signature="3432:3548" ph="SELECT FileN... createdfiles" />
+                <marker date="1517406383460" expanded="true" signature="4289:4370" ph="SELECT DateF... dateintervals" />
+                <marker date="1517406383460" expanded="true" signature="5034:5093" ph="select U_NAM... user" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="spitter-security.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spitter-security.xml">
+      <file leaf-file-name="FileManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/FileManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="9" column="61" lean-forward="true" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+            <state relative-caret-position="88">
+              <caret line="252" column="90" lean-forward="false" selection-start-line="252" selection-start-column="90" selection-end-line="252" selection-end-column="90" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/style.css">
+      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/348567f9-84c5-4945-b5fb-fdef2471f7fb/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="17" column="54" lean-forward="false" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+            <state relative-caret-position="550">
+              <caret line="22" column="31" lean-forward="false" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users" pinned="false" current-in-tab="false">
+        <entry file="das://table:/e8ab65d7/348567f9-84c5-4945-b5fb-fdef2471f7fb/springdb.users">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_roles" pinned="false" current-in-tab="false">
+        <entry file="das://table:/e8ab65d7/348567f9-84c5-4945-b5fb-fdef2471f7fb/springdb.user_roles">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -227,8 +192,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -248,13 +213,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/client/view/ResultRepresentation.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/weblogic.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/FileManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/LogSearchWS.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/LogsSearcherREST.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/SearchResultManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/SpringContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/DataBaseManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/OutdatedFilesCleaner.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/FormController.java" />
@@ -285,20 +243,27 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/model/request/SearchInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/DataController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/model/request/SignificantDateInterval.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/IndexPageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/siblion/util/InputDataValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/SearchInfoService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/DataBaseManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/SpringConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spitter-servlet.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/model/response/LogSearchResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/siblion/util/Errors.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/MainFormController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/siblion/client/rest/Client.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/templates/login.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spitter-security.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/IndexPageController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/templates/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/SpringMvcInitializer.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spitter-security.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/WebAppInitializer.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/95fcab6b-0e3d-4f63-ad35-c13ed9f9b9c0/console.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/DataBaseManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/OutdatedFilesCleaner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/FileManager.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/348567f9-84c5-4945-b5fb-fdef2471f7fb/console.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/SecurityConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/siblion/SpringConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
       </list>
     </option>
   </component>
@@ -428,57 +393,6 @@
               <item name="LogsFinderSpring" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="siblion" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LogsFinderSpring" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LogsFinderSpring" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="siblion" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LogsFinderSpring" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LogsFinderSpring" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="siblion" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="request" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LogsFinderSpring" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LogsFinderSpring" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="siblion" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="response" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LogsFinderSpring" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LogsFinderSpring" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="siblion" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LogsFinderSpring" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LogsFinderSpring" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -538,6 +452,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../logSearcher-spring" />
     <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -739,12 +654,12 @@
       <option name="presentableId" value="Default" />
       <updated>1516628707638</updated>
       <workItem from="1516628712936" duration="60199000" />
-      <workItem from="1516963012344" duration="48938000" />
+      <workItem from="1516963012344" duration="80648000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109137000" />
+    <option name="totallyTimeSpent" value="140847000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -779,6 +694,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22341569" sideWeight="0.4931973" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.50680274" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1089,146 +1005,18 @@
           <properties />
           <option name="timeStamp" value="62" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/templates/login.jsp</url>
+          <line>23</line>
+          <properties />
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="63" />
+      <option name="time" value="75" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/model/response/ResultLogs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-325">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/model/response/SearchInfoResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="e#635#636#0" expanded="false" />
-            <element signature="e#670#671#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/SpringContext.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/DOCtemplate.xsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="59" lean-forward="false" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.2.RELEASE/spring-web-5.0.2.RELEASE.jar!/org/springframework/web/bind/annotation/RequestBody.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.2.RELEASE/spring-web-5.0.2.RELEASE-sources.jar!/org/springframework/web/bind/annotation/RequestBody.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-481">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.2.RELEASE/spring-web-5.0.2.RELEASE-sources.jar!/org/springframework/web/client/RestTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="680" column="0" lean-forward="false" selection-start-line="680" selection-start-column="0" selection-end-line="680" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/templates/results.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="32" column="8" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/templates/test.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="86" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/model/XMLModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="10" column="15" lean-forward="false" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/webjars/bootstrap/4.0.0/bootstrap-4.0.0.jar!/META-INF/resources/webjars/bootstrap/4.0.0/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="1956" column="6" lean-forward="false" selection-start-line="1956" selection-start-column="1" selection-end-line="1956" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/results.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/OutdatedFilesCleaner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="800">
-          <caret line="47" column="20" lean-forward="false" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/buttons.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/util/ErrorsComparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/util/ColorSwitcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1994">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/PDFtemplate.xsl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4575">
@@ -1309,53 +1097,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/SearchInfoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="72" column="29" lean-forward="false" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2065#2066#0" expanded="true" />
-            <element signature="e#2109#2110#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/weblogic.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/DataBaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2725">
-          <caret line="122" column="1" lean-forward="false" selection-start-line="122" selection-start-column="1" selection-end-line="122" selection-end-column="1" />
-          <folding>
-            <element signature="e#4825#4826#0" expanded="true" />
-            <element signature="e#4858#4859#0" expanded="true" />
-            <element signature="e#4914#4915#0" expanded="true" />
-            <element signature="e#4958#4959#0" expanded="true" />
-            <marker date="1517313873890" expanded="true" signature="1040:1176" ph="INSERT INTO createdfiles... " />
-            <marker date="1517313873890" expanded="true" signature="1588:1700" ph="INSERT INTO dateintervals... " />
-            <marker date="1517313873890" expanded="true" signature="2324:2389" ph="DELETE FROM " />
-            <marker date="1517313873890" expanded="true" signature="2621:2685" ph="DELETE FROM " />
-            <marker date="1517313873890" expanded="true" signature="3290:3406" ph="SELECT FileN... createdfiles" />
-            <marker date="1517313873890" expanded="true" signature="4147:4228" ph="SELECT DateF... dateintervals" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/SearchResultManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.2.RELEASE/spring-aop-5.0.2.RELEASE.jar!/org/springframework/aop/support/DelegatingIntroductionInterceptor.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1380,24 +1121,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/FileManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/LogsSearcherREST.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="32" column="34" lean-forward="false" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/model/response/LogSearchResult.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -1418,22 +1141,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/IndexPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/SpringConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/util/LogsComparator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -1450,22 +1157,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/MainFormController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="44" column="34" lean-forward="false" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/client/rest/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-849">
           <caret line="38" column="48" lean-forward="false" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1478,6 +1175,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/weblogic.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/IndexPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/templates/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-75">
@@ -1486,44 +1199,247 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/templates/login.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/SecurityConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="50">
+          <caret line="2" column="34" lean-forward="false" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
+    <entry file="das://table:/e8ab65d7/95fcab6b-0e3d-4f63-ad35-c13ed9f9b9c0/mydb.user_group">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/e8ab65d7/95fcab6b-0e3d-4f63-ad35-c13ed9f9b9c0/mydb.groupes">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+        <state relative-caret-position="420">
+          <caret line="135" column="0" lean-forward="false" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/e8ab65d7/95fcab6b-0e3d-4f63-ad35-c13ed9f9b9c0/mydb.groups">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/SpringMvcInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="96" lean-forward="true" selection-start-line="4" selection-start-column="96" selection-end-line="4" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/temp.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spitter-servlet.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="21" column="11" lean-forward="false" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+        <state relative-caret-position="319">
+          <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/WebAppInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="39" lean-forward="false" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/templates/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="13" column="23" lean-forward="false" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/95fcab6b-0e3d-4f63-ad35-c13ed9f9b9c0/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="61" lean-forward="false" selection-start-line="0" selection-start-column="61" selection-end-line="0" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/e8ab65d7/95fcab6b-0e3d-4f63-ad35-c13ed9f9b9c0/mydb.groupmembers">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/e8ab65d7/95fcab6b-0e3d-4f63-ad35-c13ed9f9b9c0/mydb.user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../jdk/src.zip!/javax/sql/DataSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="76" column="17" lean-forward="false" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/SearchInfoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="72" column="29" lean-forward="false" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/OutdatedFilesCleaner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="60" column="10" lean-forward="false" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/SearchResultManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1950">
+          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/controller/MainFormController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.1.RELEASE/spring-aop-5.0.1.RELEASE.jar!/org/springframework/aop/framework/CglibAopProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="481" column="0" lean-forward="false" selection-start-line="481" selection-start-column="0" selection-end-line="481" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/FileManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="252" column="90" lean-forward="false" selection-start-line="252" selection-start-column="90" selection-end-line="252" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/348567f9-84c5-4945-b5fb-fdef2471f7fb/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="22" column="31" lean-forward="false" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/e8ab65d7/348567f9-84c5-4945-b5fb-fdef2471f7fb/springdb.user_roles">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/e8ab65d7/348567f9-84c5-4945-b5fb-fdef2471f7fb/springdb.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/DataBaseManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="24" column="23" lean-forward="false" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+          <folding>
+            <marker date="1517406383460" expanded="true" signature="1182:1318" ph="INSERT INTO createdfiles... " />
+            <marker date="1517406383460" expanded="true" signature="1730:1842" ph="INSERT INTO dateintervals... " />
+            <marker date="1517406383460" expanded="true" signature="2466:2531" ph="DELETE FROM " />
+            <marker date="1517406383460" expanded="true" signature="2763:2827" ph="DELETE FROM " />
+            <marker date="1517406383460" expanded="true" signature="3432:3548" ph="SELECT FileN... createdfiles" />
+            <marker date="1517406383460" expanded="true" signature="4289:4370" ph="SELECT DateF... dateintervals" />
+            <marker date="1517406383460" expanded="true" signature="5034:5093" ph="select U_NAM... user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/service/accessory/LogsSearcherREST.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="41" column="26" lean-forward="false" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/SpringConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/siblion/SecurityConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-431">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1851#1852#0" expanded="true" />
+            <element signature="e#1884#1885#0" expanded="true" />
+            <element signature="e#1940#1941#0" expanded="true" />
+            <element signature="e#1984#1985#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spitter-security.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="61" lean-forward="true" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+        <state relative-caret-position="106">
+          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="38" column="15" lean-forward="false" selection-start-line="38" selection-start-column="15" selection-end-line="38" selection-end-column="15" />
           <folding />
         </state>
       </provider>

@@ -15,6 +15,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.sql.SQLException;
 import java.util.Date;
 
 @ApplicationScope
@@ -45,7 +46,7 @@ public class OutdatedFilesCleaner implements ApplicationListener<ContextRefreshe
                     long creationTime = basicFileAttributes.creationTime().toMillis();
                     if ((new Date().getTime() - creationTime > availableLifeTime)) {
                         Files.delete(filePath);
-                  //      dataBaseManager.removeCreatedFile(fileName);
+            //            dataBaseManager.removeCreatedFile(fileName);
                         System.out.println(true);
                     } else System.out.println(false);
                 }
@@ -56,7 +57,8 @@ public class OutdatedFilesCleaner implements ApplicationListener<ContextRefreshe
     }
 
     @PostConstruct
-    public void setsms() {
+    public void setsms() throws SQLException {
+    //    System.out.println(dataBaseManager.getUsername());
         System.out.println(true);
         System.out.println(true);
         System.out.println(true);
@@ -64,4 +66,6 @@ public class OutdatedFilesCleaner implements ApplicationListener<ContextRefreshe
         System.out.println(true);
     }
 
+    public OutdatedFilesCleaner() {
+    }
 }

@@ -132,54 +132,60 @@ G_MEMBER</ColNames>
       <Position>3</Position>
       <DataType>varchar(1000)|0</DataType>
     </column>
-    <key id="39" parent="12" name="PRIMARY">
+    <column id="39" parent="12" name="enabled">
+      <Position>4</Position>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <key id="40" parent="12" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>U_NAME</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="40" parent="13" name="GROUP_ID">
+    <column id="41" parent="13" name="GROUP_ID">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="41" parent="13" name="USER_ID">
+    <column id="42" parent="13" name="USER_ID">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="42" parent="13" name="GROUP_ID">
+    <index id="43" parent="13" name="GROUP_ID">
       <ColNames>GROUP_ID</ColNames>
     </index>
-    <index id="43" parent="13" name="USER_ID">
+    <index id="44" parent="13" name="USER_ID">
       <ColNames>USER_ID</ColNames>
     </index>
-    <foreign-key id="44" parent="13" name="user_group_ibfk_1">
+    <foreign-key id="45" parent="13" name="user_group_ibfk_1">
       <ColNames>GROUP_ID</ColNames>
       <RefSchemaName>mydb</RefSchemaName>
       <RefTableName>groups</RefTableName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <foreign-key id="45" parent="13" name="user_group_ibfk_2">
+    <foreign-key id="46" parent="13" name="user_group_ibfk_2">
       <ColNames>USER_ID</ColNames>
       <RefSchemaName>mydb</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <column id="46" parent="14" name="ID">
+    <column id="47" parent="14" name="ID">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="47" parent="14" name="Password">
+    <column id="48" parent="14" name="Password">
       <Position>2</Position>
       <DataType>varchar(100)|0</DataType>
     </column>
-    <column id="48" parent="14" name="USERNAME">
+    <column id="49" parent="14" name="USERNAME">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <key id="49" parent="14" name="PRIMARY">
+    <key id="50" parent="14" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
