@@ -33,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/form").access("hasRole('ROLE_ADMIN')")
                 .and()
-                .formLogin().loginPage("/login").failureUrl("/login?error").loginProcessingUrl("/login")
+                .formLogin().loginPage("/login").failureUrl("/login?error").loginProcessingUrl("/login").defaultSuccessUrl("/form",true)
                 .usernameParameter("username").passwordParameter("password")
                 .and()
                 .logout().logoutSuccessUrl("/login?logout")

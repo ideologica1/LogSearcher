@@ -7,12 +7,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
-import ru.siblion.service.accessory.SearchInfoService;
+import ru.siblion.service.accessory.SearchInfoFactory;
 import ru.siblion.service.model.response.CorrectionCheckResult;
 import ru.siblion.service.model.response.LogSearchResult;
 import ru.siblion.util.InputDataValidator;
 import ru.siblion.service.model.request.SearchInfo;
 import ru.siblion.service.model.response.SearchInfoResult;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping(value = "/form")
@@ -22,18 +24,23 @@ public class MainFormController {
 
     private static final String ASYNC_URI = "http://localhost:7001/Spring/creating";
 
+
+    @Autowired
     private InputDataValidator inputDataValidator;
+
+    @Autowired
+    private SearchInfoFactory searchInfoFactory;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getIndexPage(Model model) {
-        model.addAttribute(new SearchInfoService());
         return "index";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String getResults(SearchInfoService searchInfoService, Model model) throws ConfigurationException {
-        searchInfoService.setDateIntervals();
-        SearchInfo searchInfo = searchInfoService.getSearchInfo();
+    public String getResults(Model model, HttpServletRequest request) throws ConfigurationException {
+
+        SearchInfo searchInfo = searchInfoFactory.createSearchInfo(request);
+
         inputDataValidator.correctionCheck(searchInfo);
         //получить код результа проверки на ошибки
         CorrectionCheckResult correctionCheckResult = inputDataValidator.getCorrectionCheckResult();
@@ -42,27 +49,29 @@ public class MainFormController {
                 RestTemplate restTemplate = new RestTemplate();
                 SearchInfoResult searchInfoResult = restTemplate.postForObject(SYNC_URI, searchInfo, SearchInfoResult.class);
                 model.addAttribute(searchInfoResult);
-                return "redirect: results";
+                return "results";
             }
-            else return "";
+            else return "index";
         }
         else {
             if (correctionCheckResult.getErrorCode() == 0) {
                 RestTemplate restTemplate = new RestTemplate();
                 LogSearchResult logSearchResult = restTemplate.postForObject(ASYNC_URI, searchInfo, LogSearchResult.class);
                 model.addAttribute(logSearchResult);
-                return "";
+                return "index";
             }
         }
-        return "";
+        return "index";
 
     }
 
 
 
-    @Autowired
     public void setInputDataValidator(InputDataValidator inputDataValidator) {
         this.inputDataValidator = inputDataValidator;
     }
 
+    public void setSearchInfoFactory(SearchInfoFactory searchInfoFactory) {
+        this.searchInfoFactory = searchInfoFactory;
+    }
 }

@@ -17,11 +17,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="resources/css/style.css"/>
+    <script type="text/javascript" src="resources/js/form.js"></script>
+    <script type="text/javascript" src="resources/js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="resources/js/mask-input.js"></script>
+  <!--  <script type="text/javascript">
+        jQuery(function ($) {
+            $(".interval-field").mask("99-99-9999 99:99:99");
+        });
+    </script> -->
 </head>
 <body>
-
-<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <div class="form">
     <div class="header">
@@ -30,27 +35,26 @@
             <h3>LogsFinder</h3>
         </div>
         <div class="main_label">
-            <img alt="IT god" src="resources/images/oracle.png" width="60%" />
+            <img alt="IT god" src="resources/images/oracle.png" width="60%"/>
         </div>
     </div>
-    <sf:form method="POST" modelAttribute="searchInfoService">
+    <form method="POST" action="form">
         <div class="form-group">
             <label for="regEx">Введите регулярное выражение: </label>
-            <sf:input type="input" class="form-control w-25 border-dark" id="regEx" aria-describedby="emailHelp"
-                      placeholder="Регулярное выражение" path="searchInfo.regularExpression"/>
+            <input type="text" class="form-control w-25 border-dark" id="regex" name="regex" aria-describedby="emailHelp"
+                   placeholder="Регулярное выражение"/>
         </div>
-        <div class="form-group">
-            <label for="dateintervals">Выберите временные промежутки: </label>
-            <div class="row w-75" id="dateintervals">
+        <label for="dateintervals" style="display: block">Выберите временные промежутки: </label>
+        <div class="form-group w-75" style="display: inline-block;">
+            <div class="row w-100 date-interval" id="dateintervals">
                 <div class="col">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Начало</span>
                         </div>
-                        <sf:input type="text" class="form-control border-dark" aria-describedby="basic-addon1"
-                                  placeholder="дд-мм-гггг чч-мм-сс"
-                                  pattern="[0-9]{2}-[0-9]{2}-[0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2}"
-                                  path="dateInterval.dateFromString"/>
+                        <input type="text" class="form-control border-dark interval-field"
+                               aria-describedby="basic-addon1"
+                               placeholder="дд-мм-гггг чч-мм-сс" name="dateFrom"/>
 
                     </div>
                 </div>
@@ -59,60 +63,63 @@
                         <div class="input-group-prepend border-dark">
                             <span class="input-group-text" id="basic-addon2">Конец</span>
                         </div>
-                        <sf:input type="text" class="form-control border-dark" aria-describedby="basic-addon2"
-                                  placeholder="дд-мм-гггг чч-мм-сс"
-                                  pattern="[0-9]{2}-[0-9]{2}-[0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2}"
-                                  path="dateInterval.dateToString"/>
+                        <input type="text" class="form-control border-dark interval-field"
+                               aria-describedby="basic-addon2"
+                               placeholder="дд-мм-гггг чч-мм-сс" name="dateTo"/>
 
                     </div>
                 </div>
-                <div class="col">
-                    <button type="button" class="btn btn-danger" id="delete">Удалить</button>
+                <div class="col w-25 buttons">
+                    <button type="button" class="btn btn-danger delete-interval" onclick="removeDateInterval(this)">
+                        Удалить
+                    </button>
+
+                    <button type="button" class="btn btn-success add-interval" onclick="addDateInterval()">Добавить
+                    </button>
                 </div>
             </div>
         </div>
+
         <div class="form-group">
-            <label for="location">Выберите расположение файла: </label>
-            <sf:input type="input" class="form-control w-25 border-dark" id="location" aria-describedby="emailHelp"
-                      placeholder="Название сервера, кластера или домена" path="searchInfo.location"/>
+            <label>Выберите расположение файла: </label>
+            <input type="text" class="form-control w-25 border-dark" aria-describedby="emailHelp"
+                   placeholder="Название сервера, кластера или домена" name="location"/>
         </div>
 
         <div class="form-group">
             <label>Сохранять ли найденные логи в файл: </label>
             <div class="form-check form-check-inline">
-                <sf:radiobutton class="form-check-input" name="inlineRadioOptions" id="optionNo" value="false"
-                                path="searchInfo.realization"/>
-                <label class="form-check-label" for="optionNo">Нет</label>
+                <input class="form-check-input" type="radio" name="asyncrealization" id="yesoption" value="true">
+                <label class="form-check-label" for="yesoption">Да</label>
             </div>
             <div class="form-check form-check-inline">
-                <sf:radiobutton class="form-check-input" name="inlineRadioOptions" id="optionYes" value="true"
-                                path="searchInfo.realization"/>
-                <label class="form-check-label" for="optionYes">Да</label>
+                <input class="form-check-input" type="radio" name="syncrealization" id="nooption" value="false" checked>
+                <label class="form-check-label" for="nooption">Нет</label>
             </div>
         </div>
 
 
         <label for="extension">Выберите расширение файла: </label>
-        <div class="form-row w-50">
+        <div class="form-row w-25">
             <div class="col">
                 <div class="form-group">
-
-                    <sf:select class="form-control w-50 border-dark" id="extension" path="searchInfo.fileExtention">
-                        <sf:option value=""/>
-                        <sf:option value="XML"/>
-                        <sf:option value="PDF"/>
-                        <sf:option value="RTF"/>
-                        <sf:option value="HTML"/>
-                        <sf:option value="DOC"/>
-                        <sf:option value="LOG"/>
-                    </sf:select>
+                    <select class="custom-select mr-sm-2" id="extension" name="extension">
+                        <option selected>Extension...</option>
+                        <option value="XML">XML</option>
+                        <option value="HTML">HTML</option>
+                        <option value="PDF">PDF</option>
+                        <option value="RTF">RTF</option>
+                        <option value="DOC">DOC</option>
+                        <option value="LOG">LOG</option>
+                    </select>
                 </div>
             </div>
-            <div class="col">
-                <button type="submit" class="btn btn-success w-25">Поиск</button>
-            </div>
         </div>
-    </sf:form>
+
+        <div class="form-row w-100">
+            <button type="submit" class="btn btn-primary w-25">Поиск</button>
+        </div>
+    </form>
 </div>
 
 

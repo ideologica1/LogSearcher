@@ -4,7 +4,7 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import ru.siblion.service.accessory.SearchInfoService;
+import ru.siblion.service.accessory.SearchInfoFactory;
 import ru.siblion.util.InputDataValidator;
 import ru.siblion.service.model.request.SearchInfo;
 import ru.siblion.service.model.response.CorrectionCheckResult;
@@ -21,7 +21,7 @@ public class Client {
   private CorrectionCheckResult correctionCheckResult;
 
   @Autowired
-  private SearchInfoService searchInfoService;
+  private SearchInfoFactory searchInfoFactory;
 
   @Autowired
   private LogSearchResult logSearchResult;
@@ -34,7 +34,6 @@ public class Client {
   private SearchInfoResult searchInfoResult;
 
   public String getResponse() throws ConfigurationException {
-    setDateIntervals();
     corectionCheck(searchInfo);
     if (isErrorOccured(correctionCheckResult)) {
     }
@@ -69,26 +68,6 @@ public class Client {
 
   private boolean isErrorOccured(CorrectionCheckResult correctionCheckResult) {
     return correctionCheckResult.getErrorCode() != 0;
-  }
-
-  private void setDateIntervals()  {
-    searchInfo.setDateInterval(searchInfoService.getDateIntervalList());
-  }
-
-  public SearchInfo getSearchInfo() {
-    return searchInfo;
-  }
-
-  public void setSearchInfo(SearchInfo searchInfo) {
-    this.searchInfo = searchInfo;
-  }
-
-  public SearchInfoResult getSearchInfoResult() {
-    return searchInfoResult;
-  }
-
-  public void setSearchInfoResult(SearchInfoResult searchInfoResult) {
-    this.searchInfoResult = searchInfoResult;
   }
 
 }

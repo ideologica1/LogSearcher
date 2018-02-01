@@ -1,9 +1,9 @@
 ru\siblion\service\accessory\DataBaseManager.class
-ru\siblion\service\accessory\SearchInfoService.class
 ru\siblion\service\accessory\OutdatedFilesCleaner.class
 ru\siblion\service\model\response\ResultLogs.class
 ru\siblion\service\model\response\SearchInfoResult.class
 ru\siblion\service\model\response\LogSearchResult.class
+ru\siblion\service\accessory\SearchInfoFactory.class
 ru\siblion\SecurityConfiguration.class
 ru\siblion\SpringConfiguration.class
 ru\siblion\util\InputDataValidator.class

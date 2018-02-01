@@ -35,8 +35,10 @@ public class InputDataValidator {
         List<SignificantDateInterval> significantDateIntervals = searchInfo.getDateInterval();
         List<Errors> errorsList = new ArrayList<>();
 
-        if (!isExtensionChosen(fileExtension))
-            errorsList.add(Errors.EXTENSION_ABSENCE);
+        if(!searchInfo.getRealization()) {
+            if (!isExtensionChosen(fileExtension))
+                errorsList.add(Errors.EXTENSION_ABSENCE);
+        }
 
         if (!isFilePathValid(location)) {
             errorsList.add(Errors.LOGS_LOCATION);

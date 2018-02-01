@@ -163,6 +163,8 @@ td.topalign {
 .form {
     margin: 50px;
     margin-top: 20px;
+    width: 1450px;
+    overflow: auto;
 }
 
 .header {
