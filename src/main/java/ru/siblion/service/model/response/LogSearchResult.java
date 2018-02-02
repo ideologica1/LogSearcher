@@ -5,8 +5,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
 import ru.siblion.util.Errors;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 @Component
 @RequestScope
+@XmlRootElement
 public class LogSearchResult {
 
     private String response;

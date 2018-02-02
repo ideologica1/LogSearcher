@@ -72,6 +72,32 @@ function hexToRGB(hex) {
     } : null;
 }
 
+jQuery(document).ready(function($) {
+    $("#search-form").submit(function(event) {
+
+        // Prevent the form from submitting via the browser.
+        event.preventDefault();
+        searchViaAjax();
+
+    });
+});
+
+function searchViaAjax() {
+    var search = {}
+    search["regex"] = $("#regex").val();
+
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:7001/Spring/form/results', true);
+    xhr.send('hello');
+
+    if (xhr.status != 200) {
+        alert( xhr.status + ': ' + 'gjitk yf[eq' );
+    } else {
+        alert( xhr.responseText );
+    }
+}
+
 window.onload = function () {
     var color = sessionStorage.getItem("color");
     if (color != null) {

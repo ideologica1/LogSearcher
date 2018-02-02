@@ -218,7 +218,7 @@
                 </div>
                 <div class="modal-footer">
                     <form action="logout" method="POST">
-                        <input type="submit" class="btn btn-danger" value="Да"/>
+                        <button type="submit" class="btn btn-danger" value="Да">Да</button>
 
                         <button type="button" class="btn btn-secondary"  data-dismiss="modal">Нет</button>
                     </form>
