@@ -92,7 +92,7 @@
     color: #f2b8f2;
     padding: 8.5px 18px;
 }
-.f2b8f2:hover {
+.f2b8f2-button:hover {
     border: 1px solid #f2b8f2;
     color: #f2b8f2;
     -webkit-box-shadow: 0px 0px 50px #f2b8f2;
@@ -245,7 +245,7 @@
     color: #b4f0f0;
     padding: 8.5px 18px;
 }
-.f2f0b4:hover {
+.f2f0b4-button:hover {
     border: 1px solid #b4f0f0;
     color: #b4f0f0;
     -webkit-box-shadow: 0px 0px 50px #b4f0f0;
