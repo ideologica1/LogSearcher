@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class SearchInfoResult implements Serializable {
+public class SearchInfoResult {
     private long ErrorCode;
     private String ErrorMessage;
     private String EmptyResultMessage;
@@ -52,5 +52,6 @@ public class SearchInfoResult implements Serializable {
     public void addResultLogs(ResultLogs resultLogs) {
         resultLogsList.add(resultLogs);
     }
+
 
 }

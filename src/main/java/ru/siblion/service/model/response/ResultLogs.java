@@ -48,11 +48,6 @@ public class ResultLogs {
         return reportDate;
     }
 
-    @Override
-    public String toString() {
-        return Content;
-    }
-
 
     public ResultLogs() {
     }

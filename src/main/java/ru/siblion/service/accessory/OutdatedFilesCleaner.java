@@ -46,12 +46,12 @@ public class OutdatedFilesCleaner implements ApplicationListener<ContextRefreshe
                     long creationTime = basicFileAttributes.creationTime().toMillis();
                     if ((new Date().getTime() - creationTime > availableLifeTime)) {
                         Files.delete(filePath);
-            //            dataBaseManager.removeCreatedFile(fileName);
+                        dataBaseManager.removeCreatedFile(fileName);
                         System.out.println(true);
                     } else System.out.println(false);
                 }
             }
-        } catch (ConfigurationException | IOException  ignored) {
+        } catch (ConfigurationException | IOException | SQLException ignored) {
 
         }
     }

@@ -1,6 +1,7 @@
 package ru.siblion.service.model.response;
 
 
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
 import ru.siblion.util.Errors;
@@ -19,7 +20,7 @@ public class LogSearchResult {
     }
 
     public void setResponse(String response) {
-        this.response = "Путь до интересующего файла: " + response;
+        this.response = response;
     }
 
     public void setResponse(CorrectionCheckResult correctionCheckResult) {
@@ -30,4 +31,5 @@ public class LogSearchResult {
 
     public LogSearchResult() {
     }
+
 }

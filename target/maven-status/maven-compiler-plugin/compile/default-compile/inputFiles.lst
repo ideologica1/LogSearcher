@@ -1,13 +1,14 @@
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\model\request\SearchInfo.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\accessory\FileManager.java
-C:\Java\LogsFinderSpring\src\main\java\ru\siblion\util\FileExtention.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\accessory\SearchResultManager.java
+C:\Java\LogsFinderSpring\src\main\java\ru\siblion\util\FileExtension.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\util\ColorSwitcher.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\accessory\SearchInfoFactory.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\model\XMLModel.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\model\response\CorrectionCheckResult.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\SecurityConfiguration.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\util\InputDataValidator.java
+C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\model\response\Result.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\util\ErrorsComparator.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\util\LogsComparator.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\accessory\LogSearchResultService.java
@@ -18,9 +19,11 @@ C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\controller\MainFormCon
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\model\response\LogSearchResult.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\SpringConfiguration.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\accessory\DataBaseManager.java
+C:\Java\LogsFinderSpring\src\main\java\ru\siblion\SpringAsyncConfig.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\client\rest\Client.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\accessory\LogsSearcherREST.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\util\Errors.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\model\response\ResultLogs.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\accessory\OutdatedFilesCleaner.java
+C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\CustomAsyncExceptionHandler.java
 C:\Java\LogsFinderSpring\src\main\java\ru\siblion\service\model\request\SignificantDateInterval.java

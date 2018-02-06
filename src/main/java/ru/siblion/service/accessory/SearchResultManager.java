@@ -11,6 +11,7 @@ import ru.siblion.service.model.response.LogSearchResult;
 import ru.siblion.service.model.response.ResultLogs;
 import ru.siblion.service.model.response.SearchInfoResult;
 import ru.siblion.util.LogsComparator;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Component
-public class SearchResultManager implements Serializable{
+public class SearchResultManager implements Serializable {
 
     @Autowired
     private CorrectionCheckResult correctionCheckResult;

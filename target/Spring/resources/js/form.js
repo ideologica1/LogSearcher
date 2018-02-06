@@ -13,6 +13,7 @@ function addDateInterval() {
 
     newRow.getElementsByClassName("buttons")[0].removeChild(newRow.getElementsByClassName("buttons")[0].getElementsByClassName("add-interval")[0]);
     lastRow.parentNode.insertBefore(newRow, lastRow.nextSibling);
+    $(".interval-field").mask("99-99-9999 99:99:99");
 }
 
 function removeDateInterval(button) {
@@ -44,6 +45,7 @@ function clearAllFields() {
             elements[ii].value = "";
         }
     }
+    $('.date-interval').not(':first').remove();
 
 }
 
@@ -70,6 +72,27 @@ function hexToRGB(hex) {
         g: parseInt(result[2], 16),
         b: parseInt(result[3], 16)
     } : null;
+}
+
+
+
+function searchViaAjax() {
+    $.ajax({
+        url: 'http://localhost:7001/Spring/form', // url where to submit the request
+        type : "POST", // type of action POST || GET
+        dataType : 'json', // data type
+        data : $("#search-form").serialize(), // post data || get data
+        success : function(data) {
+            // you can see the result from the console
+            // tab of the developer tools
+            console.log(data);
+            $('#modalResponse').html(data.response);
+            $('#myModal').modal('show');
+        },
+        error: function(xhr, resp, text) {
+            console.log(xhr, resp, text);
+        }
+    });
 }
 
 window.onload = function () {

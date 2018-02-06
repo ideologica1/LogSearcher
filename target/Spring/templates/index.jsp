@@ -21,6 +21,18 @@
     <script type="text/javascript" src="resources/js/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="resources/js/mask-input.js"></script>
     <script type="text/javascript" src="resources/js/form.js"></script>
+    <script  type="text/javascript">
+    jQuery(document).ready(function() {
+        $(".interval-field").mask("99-99-9999 99:99:99");
+            $("#search-form").submit(function(event) {
+
+                // Prevent the form from submitting via the browser.
+                event.preventDefault();
+                searchViaAjax();
+            });
+        });
+
+    </script>
   <!--  <script type="text/javascript">
         jQuery(function ($) {
             $(".interval-field").mask("99-99-9999 99:99:99");
@@ -39,10 +51,10 @@
             <img alt="IT god" src="resources/images/oracle.png" width="60%"/>
         </div>
     </div>
-    <form method="POST" action="form">
+    <form method="POST" action="form" id="search-form">
         <div class="form-group">
             <label for="regEx">Введите регулярное выражение: </label>
-            <input type="text" class="form-control w-25 border-dark" id="regex" aria-describedby="emailHelp"
+            <input type="text" class="form-control w-25 border-dark" id="regex" name="regex" aria-describedby="emailHelp"
                    placeholder="Регулярное выражение"/>
         </div>
 
@@ -110,12 +122,12 @@
                 <div class="form-group">
                     <select class="custom-select mr-sm-2" id="extension" name="extension">
                         <option selected>Extension...</option>
-                        <option value="1">XML</option>
-                        <option value="2">HTML</option>
-                        <option value="3">PDF</option>
-                        <option value="1">RTF</option>
-                        <option value="2">DOC</option>
-                        <option value="3">LOG</option>
+                        <option value="XML">XML</option>
+                        <option value="HTML">HTML</option>
+                        <option value="PDF">PDF</option>
+                        <option value="RTF">RTF</option>
+                        <option value="DOC">DOC</option>
+                        <option value="LOG">LOG</option>
                     </select>
                 </div>
             </div>
@@ -226,12 +238,27 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Результат:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalResponse">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>

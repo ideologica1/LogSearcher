@@ -6,10 +6,12 @@ ru\siblion\service\controller\LoginPageController.class
 ru\siblion\service\model\response\LogSearchResult.class
 ru\siblion\service\accessory\SearchInfoFactory.class
 ru\siblion\SecurityConfiguration.class
+ru\siblion\service\model\response\Result.class
+ru\siblion\SpringAsyncConfig.class
 ru\siblion\SpringConfiguration.class
 ru\siblion\util\InputDataValidator.class
-ru\siblion\util\FileExtention.class
 ru\siblion\service\accessory\FileManager.class
+ru\siblion\service\CustomAsyncExceptionHandler.class
 ru\siblion\service\model\XMLModel.class
 ru\siblion\service\model\request\SearchInfo.class
 ru\siblion\service\accessory\LogSearchResultService.class
@@ -19,8 +21,10 @@ ru\siblion\service\model\request\SignificantDateInterval.class
 ru\siblion\client\rest\Client.class
 ru\siblion\util\LogoutManager.class
 ru\siblion\util\LogsComparator.class
+ru\siblion\service\accessory\FileManager$1.class
 ru\siblion\util\Errors.class
 ru\siblion\service\accessory\LogsSearcherREST.class
+ru\siblion\util\FileExtension.class
 ru\siblion\util\ColorSwitcher.class
 ru\siblion\util\ErrorsComparator.class
 ru\siblion\service\accessory\SearchResultManager.class

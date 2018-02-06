@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@RequestScope
 public class DataBaseManager implements Serializable {
 
     @Autowired
@@ -41,7 +40,7 @@ public class DataBaseManager implements Serializable {
                 + "(?, ?, ?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(addFileQuery);
         preparedStatement.setString(1, name);
-        preparedStatement.setString(2, searchInfo.getFileExtention());
+        preparedStatement.setString(2, searchInfo.getFileExtension().toString());
         preparedStatement.setString(3, searchInfo.getRegularExpression());
         preparedStatement.setString(4, searchInfo.getLocation());
         preparedStatement.execute();
@@ -82,7 +81,7 @@ public class DataBaseManager implements Serializable {
         List<String> filesName = new ArrayList<>();
         String location = searchInfo.getLocation();
         String regularExpression = searchInfo.getRegularExpression();
-        String fileExtension = searchInfo.getFileExtention();
+        String fileExtension = searchInfo.getFileExtension().toString();
         String getExistingFiles = "SELECT FileName FROM createdfiles "
                 +"WHERE RegularExpression = ? AND Location = ? AND Extension = ? ";
         PreparedStatement preparedStatement = connection.prepareStatement(getExistingFiles);
@@ -116,21 +115,7 @@ public class DataBaseManager implements Serializable {
         return existingFilesDateIntervals;
     }
 
-    public String getUsername() throws SQLException {
-        setConnection();
-        String getName = "select U_NAME, U_PASSWORD, enabled from user where U_NAME=?";
-        PreparedStatement preparedStatement = connection.prepareStatement(getName);
-        preparedStatement.setString(1, "siblion");
-        ResultSet resultSet = preparedStatement.executeQuery();
-        StringBuilder stringBuilder = new StringBuilder();
-        while (resultSet.next()) {
-            stringBuilder.append(resultSet.getString(1));
-            stringBuilder.append(resultSet.getString(2));
-            stringBuilder.append(resultSet.getString(3));
-        }
-        closeConnection();
-        return stringBuilder.toString();
-    }
+
 
     public DataSource getDataSource() {
         return dataSource;
@@ -142,4 +127,8 @@ public class DataBaseManager implements Serializable {
 
     public DataBaseManager() {
     }
+
+
+
+
 }

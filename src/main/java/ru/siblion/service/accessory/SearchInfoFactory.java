@@ -1,14 +1,12 @@
 package ru.siblion.service.accessory;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
-import org.springframework.web.context.annotation.SessionScope;
 import ru.siblion.service.model.request.SearchInfo;
 import ru.siblion.service.model.request.SignificantDateInterval;
+import ru.siblion.util.FileExtension;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,9 +21,14 @@ public class SearchInfoFactory implements Serializable {
         List<SignificantDateInterval> dateIntervals = new ArrayList<>();
 
         searchInfo.setLocation(request.getParameter("location"));
-        searchInfo.setFileExtention(request.getParameter("extension"));
+        try {
+            searchInfo.setFileExtension(FileExtension.valueOf(request.getParameter("extension")));
+        }
+        catch (IllegalArgumentException e) {
+            searchInfo.setFileExtension(null);
+        }
         searchInfo.setRegularExpression(request.getParameter("regex"));
-        if (request.getParameter("asyncrealization") != null) {
+        if (request.getParameter("realization") != null) {
             searchInfo.setRealization(true);
         }
         else searchInfo.setRealization(false);

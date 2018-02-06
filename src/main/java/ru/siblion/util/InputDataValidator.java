@@ -6,7 +6,6 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.siblion.service.accessory.LogSearchResultService;
 import ru.siblion.service.model.request.SearchInfo;
 import ru.siblion.service.model.request.SignificantDateInterval;
 import ru.siblion.service.model.response.CorrectionCheckResult;
@@ -31,7 +30,7 @@ public class InputDataValidator {
     public void correctionCheck(SearchInfo searchInfo) throws ConfigurationException {
 
         String location = searchInfo.getLocation();
-        String fileExtension = searchInfo.getFileExtention();
+        FileExtension fileExtension = searchInfo.getFileExtension();
         List<SignificantDateInterval> significantDateIntervals = searchInfo.getDateInterval();
         List<Errors> errorsList = new ArrayList<>();
 
@@ -44,7 +43,7 @@ public class InputDataValidator {
             errorsList.add(Errors.LOGS_LOCATION);
         }
 
-        if (isMandatoryParamEmpty(fileExtension, location)) {
+        if (isMandatoryParamEmpty(location)) {
             errorsList.add(Errors.INPUT_PARAMETERS);
         }
 
@@ -114,8 +113,8 @@ public class InputDataValidator {
         }
     }
 
-    private boolean isMandatoryParamEmpty(String fileExtension, String location) {
-        if (fileExtension == null || location == null)
+    private boolean isMandatoryParamEmpty(String location) {
+        if (location == null)
             return true;
         else return false;
 
@@ -147,7 +146,7 @@ public class InputDataValidator {
         return dateFrom.after(new Date());
     }
 
-    private boolean isExtensionChosen(String extension) {
+    private boolean isExtensionChosen(FileExtension extension) {
 
         return extension != null;
 

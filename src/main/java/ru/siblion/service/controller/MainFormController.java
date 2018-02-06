@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 import ru.siblion.service.accessory.SearchInfoFactory;
 import ru.siblion.service.model.response.CorrectionCheckResult;
@@ -37,7 +38,8 @@ public class MainFormController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String getResults(Model model, HttpServletRequest request) throws ConfigurationException {
+    @ResponseBody
+    public LogSearchResult getResults(Model model, HttpServletRequest request) throws ConfigurationException {
 
         SearchInfo searchInfo = searchInfoFactory.createSearchInfo(request);
 
@@ -49,19 +51,23 @@ public class MainFormController {
                 RestTemplate restTemplate = new RestTemplate();
                 SearchInfoResult searchInfoResult = restTemplate.postForObject(SYNC_URI, searchInfo, SearchInfoResult.class);
                 model.addAttribute(searchInfoResult);
-                return "results";
+                return null;
             }
-            else return "index";
+            else return null;
         }
         else {
             if (correctionCheckResult.getErrorCode() == 0) {
                 RestTemplate restTemplate = new RestTemplate();
                 LogSearchResult logSearchResult = restTemplate.postForObject(ASYNC_URI, searchInfo, LogSearchResult.class);
-                model.addAttribute(logSearchResult);
-                return "index";
+               // model.addAttribute(logSearchResult);
+                return logSearchResult;
+            }
+            else {
+                LogSearchResult logSearchResult = new LogSearchResult();
+                logSearchResult.setResponse(correctionCheckResult);
+                return logSearchResult;
             }
         }
-        return "index";
 
     }
 

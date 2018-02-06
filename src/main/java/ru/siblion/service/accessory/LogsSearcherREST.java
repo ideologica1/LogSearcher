@@ -27,10 +27,10 @@ public class LogsSearcherREST {
     public LogSearchResult logsSearchAsync(@RequestBody SearchInfo searchInfo) throws SQLException, ParseException, IOException, JAXBException, SAXException, ConfigurationException, TransformerException {
         LogSearchResult logSearchResult = new LogSearchResult();
         if (fileSearch(searchInfo)) {
-            logSearchResult.setResponse(fileManager.getFileAbsolutePath());
+            logSearchResult.setResponse("Путь до интересующего файла: " + fileManager.getFileAbsolutePath());
         } else {
             generateFile(searchInfo);
-            logSearchResult.setResponse(fileManager.getFileAbsolutePath());
+            logSearchResult.setResponse("Путь до интересующего файла: " + fileManager.getFileAbsolutePath());
         }
 
         return logSearchResult;
@@ -44,13 +44,13 @@ public class LogsSearcherREST {
     }
 
 
-    private boolean fileSearch(SearchInfo searchInfo) throws SQLException, ParseException {
+    private boolean fileSearch(SearchInfo searchInfo) throws SQLException, ParseException, ConfigurationException {
         return fileManager.fileSearch(searchInfo);
     }
 
 
     private void generateFile(SearchInfo searchInfo) throws TransformerException, IOException, JAXBException, SQLException, SAXException, ConfigurationException {
-        String absolutePath = fileManager.generateFileAbsolutePath(searchInfo.getFileExtention());
+        String absolutePath = fileManager.generateFileAbsolutePath(searchInfo.getFileExtension().toString());
         fileManager.setFileAbsolutePath(absolutePath);
         fileManager.generateFile(searchInfo);
     }

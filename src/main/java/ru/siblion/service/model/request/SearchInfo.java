@@ -1,8 +1,8 @@
 package ru.siblion.service.model.request;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
+import ru.siblion.util.FileExtension;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -21,7 +21,7 @@ public class SearchInfo implements Serializable {
 
     private boolean realization;
 
-    private String fileExtention;
+    private FileExtension fileExtension;
 
     public SearchInfo() {
     }
@@ -58,12 +58,12 @@ public class SearchInfo implements Serializable {
         this.realization = realization;
     }
 
-    public String getFileExtention() {
-        return fileExtention;
+    public FileExtension getFileExtension() {
+        return fileExtension;
     }
 
-    public void setFileExtention(String fileExtention) {
-        this.fileExtention = fileExtention;
+    public void setFileExtension(FileExtension fileExtension) {
+        this.fileExtension = fileExtension;
     }
 
     public boolean isRealization() {

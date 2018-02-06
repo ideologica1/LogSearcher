@@ -5,7 +5,7 @@ import org.springframework.web.context.annotation.RequestScope;
 
 import java.io.Serializable;
 
-@RequestScope
+
 @Component
 public class CorrectionCheckResult implements Serializable{
     private long errorCode = 0;
@@ -17,4 +17,5 @@ public class CorrectionCheckResult implements Serializable{
     public void setErrorCode(long errorCode) {
         this.errorCode = errorCode;
     }
+
 }
