@@ -51,42 +51,44 @@ public class SearchResultManager implements Serializable {
             for (int i = 0; i < serversList.length; i++) {
                 String[] filesList = new File(serversList[i]).list();
                 String line;
-                for (int j = 0; j < filesList.length; j++) {
-                    Matcher matcher = excludedLogs.matcher(filesList[j]);
-                    if (matcher.matches())
-                        try (BufferedReader reader = new BufferedReader(
-                                new InputStreamReader(
-                                        new FileInputStream(serversList[i] + filesList[j]), StandardCharsets.UTF_8))) {
+                if (filesList != null) {
+                    for (int j = 0; j < filesList.length; j++) {
+                        Matcher matcher = excludedLogs.matcher(filesList[j]);
+                        if (matcher.matches())
+                            try (BufferedReader reader = new BufferedReader(
+                                    new InputStreamReader(
+                                            new FileInputStream(serversList[i] + filesList[j]), StandardCharsets.UTF_8))) {
 
-                            while ((line = reader.readLine()) != null) {
-                                if (!line.endsWith("> ")) {
-                                    tempBuilder.append(line).append("\n");
-                                } else {
-                                    tempBuilder.append(line).append("\n");
-                                    writtenLog = tempBuilder.toString();
-                                    tempBuilder = new StringBuilder();
-                                    if (isStringValid(writtenLog, searchInfo)) {
-                                        correctLogsList.add(writtenLog);
+                                while ((line = reader.readLine()) != null) {
+                                    if (!line.endsWith("> ")) {
+                                        tempBuilder.append(line).append("\n");
+                                    } else {
+                                        tempBuilder.append(line).append("\n");
+                                        writtenLog = tempBuilder.toString();
+                                        tempBuilder = new StringBuilder();
+                                        if (isStringValid(writtenLog, searchInfo)) {
+                                            correctLogsList.add(writtenLog);
+                                        }
                                     }
                                 }
-                            }
 
 
-                            // установка значений resultLogs и добавление в лист логов
-                            for (int k = 0; k < correctLogsList.size(); k++) {
-                                String[] splittedString = correctLogsList.get(k).split("> <");
-                                String content = splittedString[splittedString.length - 1];
-                                Date timeMoment = new Date(Long.parseLong(splittedString[9]));
-                                resultLogs = new ResultLogs();
-                                resultLogs.setContent(content);
-                                resultLogs.setFileName(filesList[j]);
-                                resultLogs.setTimeMoment(timeMoment);
-                                searchInfoResult.addResultLogs(resultLogs);
+                                // установка значений resultLogs и добавление в лист логов
+                                for (int k = 0; k < correctLogsList.size(); k++) {
+                                    String[] splittedString = correctLogsList.get(k).split("> <");
+                                    String content = splittedString[splittedString.length - 1];
+                                    Date timeMoment = new Date(Long.parseLong(splittedString[9]));
+                                    resultLogs = new ResultLogs();
+                                    resultLogs.setContent(content);
+                                    resultLogs.setFileName(filesList[j]);
+                                    resultLogs.setTimeMoment(timeMoment);
+                                    searchInfoResult.addResultLogs(resultLogs);
+                                }
+                                correctLogsList = new ArrayList<>();
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
-                            correctLogsList = new ArrayList<>();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                    }
                 }
             }
             if (searchInfoResult.getResultLogsList().isEmpty()) {

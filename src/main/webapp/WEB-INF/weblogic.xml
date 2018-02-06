@@ -4,4 +4,12 @@
                   xmlns="http://www.bea.com/ns/weblogic/weblogic-web-app">
 
 
+    <work-manager>
+        <name>customWorkManager</name>
+        <max-threads-constraint>
+            <name>MaxThreadsCount</name>
+            <count>32</count>
+        </max-threads-constraint>
+    </work-manager>
+
 </weblogic-web-app>

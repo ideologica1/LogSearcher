@@ -24,8 +24,8 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            ru.siblion.SecurityConfiguration
-            ru.siblion.SpringConfiguration
+            ru.siblion.configurations.SecurityConfiguration
+            ru.siblion.configurations.SpringBaseConfiguration
         </param-value>
     </context-param>
 

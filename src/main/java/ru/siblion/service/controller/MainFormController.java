@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import ru.siblion.service.accessory.SearchInfoFactory;
 import ru.siblion.service.model.response.CorrectionCheckResult;
 import ru.siblion.service.model.response.LogSearchResult;
-import ru.siblion.util.InputDataValidator;
+import ru.siblion.service.accessory.InputDataValidator;
 import ru.siblion.service.model.request.SearchInfo;
 import ru.siblion.service.model.response.SearchInfoResult;
 
@@ -32,10 +32,13 @@ public class MainFormController {
     @Autowired
     private SearchInfoFactory searchInfoFactory;
 
+
     @RequestMapping(method = RequestMethod.GET)
     public String getIndexPage(Model model) {
         return "index";
     }
+
+
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
@@ -44,7 +47,6 @@ public class MainFormController {
         SearchInfo searchInfo = searchInfoFactory.createSearchInfo(request);
 
         inputDataValidator.correctionCheck(searchInfo);
-        //получить код результа проверки на ошибки
         CorrectionCheckResult correctionCheckResult = inputDataValidator.getCorrectionCheckResult();
         if (!searchInfo.getRealization()) {
             if (correctionCheckResult.getErrorCode() == 0) {

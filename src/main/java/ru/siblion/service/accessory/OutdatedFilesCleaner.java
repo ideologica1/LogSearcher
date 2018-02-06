@@ -5,10 +5,10 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.ApplicationScope;
 
-import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -20,24 +20,45 @@ import java.util.Date;
 
 @ApplicationScope
 @Component
-public class OutdatedFilesCleaner implements ApplicationListener<ContextRefreshedEvent> {
+public class OutdatedFilesCleaner implements ApplicationListener<ContextRefreshedEvent>, Runnable {
 
 
     @Autowired
     private DataBaseManager dataBaseManager;
 
+    @Autowired
+    private ThreadPoolTaskScheduler taskScheduler;
+
 
     @Override
     public void onApplicationEvent(final ContextRefreshedEvent event) {
+        try {
+            configureCleaningOutdatedFilesSchedule();
+        } catch (SQLException | ConfigurationException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public void configureCleaningOutdatedFilesSchedule() throws SQLException, ConfigurationException {
+
+     //   this.run();
+        PropertiesConfiguration conf = new PropertiesConfiguration("C:/Java/LogsFinderEJB/src/main/resources/application.properties");
+        long delayOfSchedulingExecution = (conf.getLong("CleaningIntervalInHours") * 3600000);
+        taskScheduler.scheduleWithFixedDelay(new OutdatedFilesCleaner(), delayOfSchedulingExecution);
+    }
+
+    public OutdatedFilesCleaner() {
+    }
+
+    @Override
+    public void run() {
         try {
             PropertiesConfiguration conf = new PropertiesConfiguration("C:/Java/LogsFinderEJB/src/main/resources/application.properties");
             String filesDirectory = conf.getString("created_files");
             long availableLifeTime = (conf.getLong("AvailableLifeTimeInHours") * 3600000);
             String[] fileList = new File(filesDirectory).list();
-            System.out.println(true);
-            System.out.println(true);
-            System.out.println(true);
-            System.out.println(true);
             if (fileList != null) {
                 for (String fileName : fileList) {
                     System.out.println(fileName);
@@ -47,8 +68,8 @@ public class OutdatedFilesCleaner implements ApplicationListener<ContextRefreshe
                     if ((new Date().getTime() - creationTime > availableLifeTime)) {
                         Files.delete(filePath);
                         dataBaseManager.removeCreatedFile(fileName);
-                        System.out.println(true);
-                    } else System.out.println(false);
+                        System.out.println("outdated");
+                    } else System.out.println("up to date");
                 }
             }
         } catch (ConfigurationException | IOException | SQLException ignored) {
@@ -56,16 +77,11 @@ public class OutdatedFilesCleaner implements ApplicationListener<ContextRefreshe
         }
     }
 
-    @PostConstruct
-    public void setsms() throws SQLException {
-    //    System.out.println(dataBaseManager.getUsername());
-        System.out.println(true);
-        System.out.println(true);
-        System.out.println(true);
-        System.out.println(true);
-        System.out.println(true);
+    public void setDataBaseManager(DataBaseManager dataBaseManager) {
+        this.dataBaseManager = dataBaseManager;
     }
 
-    public OutdatedFilesCleaner() {
+    public void setTaskScheduler(ThreadPoolTaskScheduler taskScheduler) {
+        this.taskScheduler = taskScheduler;
     }
 }
