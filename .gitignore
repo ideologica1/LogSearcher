@@ -1,7 +1,6 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
-### STS ###
 .apt_generated
 .classpath
 .factorypath
@@ -9,8 +8,9 @@ target/
 .settings
 .springBeans
 
-### IntelliJ IDEA ###
+
 .idea
 *.iws
 *.iml
 *.ipr
+

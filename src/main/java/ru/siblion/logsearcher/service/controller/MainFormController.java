@@ -42,7 +42,6 @@ public class MainFormController {
     }
 
 
-
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public LogSearchResult getResults(Model model, HttpServletRequest request) throws ConfigurationException {
@@ -55,29 +54,23 @@ public class MainFormController {
 
         inputDataValidator.correctionCheck(searchInfo);
         CorrectionCheckResult correctionCheckResult = inputDataValidator.getCorrectionCheckResult();
-        if (!searchInfo.getRealization()) {
-            if (correctionCheckResult.getErrorCode() == 0) {
+        if (correctionCheckResult.getErrorCode() == 0) {
+            if (!searchInfo.getRealization()) {
+
                 SearchInfoResult searchInfoResult = serviceConsumer.searchLogsSync(searchInfo);
-              //  model.addAttribute(searchInfoResult);
+                //  model.addAttribute(searchInfoResult);
                 return null;
-            }
-            else {
-                logger.info(" has received warning \"search process was corrupted due to incorrect input data\"");
-                return null;
-            }
-        }
-        else {
-            if (correctionCheckResult.getErrorCode() == 0) {
+            } else {
+
                 LogSearchResult logSearchResult = serviceConsumer.searchLogsAsync(searchInfo);
-               // model.addAttribute(logSearchResult);
+                // model.addAttribute(logSearchResult);
                 return logSearchResult;
             }
-            else {
-                logger.info(" has received warning \"search process was corrupted due to incorrect input data\"");
-                LogSearchResult logSearchResult = new LogSearchResult();
-                logSearchResult.setResponse(correctionCheckResult);
-                return logSearchResult;
-            }
+        } else {
+            logger.info(" has received warning \"search process was corrupted due to incorrect input data\"");
+            LogSearchResult logSearchResult = new LogSearchResult();
+            logSearchResult.setResponse(correctionCheckResult);
+            return logSearchResult;
         }
 
     }
@@ -87,7 +80,6 @@ public class MainFormController {
     public void reportColorAlteration(@RequestBody String string) {
         logger.info(" switched form color to " + "#" + string.substring(3, 9));
     }
-
 
 
     public void setInputDataValidator(InputDataValidator inputDataValidator) {
