@@ -1,6 +1,10 @@
 target/
-!.mvn/wrapper/maven-wrapper.jar
-
+.idea/
+*.iml
+*.iws
+*.iml
+*.ipr
+.mvn/wrapper/maven-wrapper.jar
 .apt_generated
 .classpath
 .factorypath
@@ -9,8 +13,5 @@ target/
 .springBeans
 
 
-.idea
-*.iws
-*.iml
-*.ipr
+
 
