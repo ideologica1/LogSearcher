@@ -24,8 +24,8 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            ru.siblion.configurations.SecurityConfiguration
-            ru.siblion.configurations.SpringBaseConfiguration
+            ru.siblion.logsearcher.configuration.SecurityConfiguration
+            ru.siblion.logsearcher.configuration.SpringBaseConfiguration
         </param-value>
     </context-param>
 
@@ -57,6 +57,8 @@
         </filter-class>
     </filter>
 
+
+
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/</url-pattern>
@@ -66,4 +68,6 @@
         <servlet-name>searcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+
 </web-app>

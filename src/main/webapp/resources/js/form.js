@@ -52,15 +52,38 @@ function clearAllFields() {
 function switchColor(hex) {
     sessionStorage.setItem("color", hex);
     var body = document.getElementsByTagName("BODY")[0];
-    body.style.backgroundColor = hex;
-    var inputField = document.getElementsByTagName("input");
-    var backgroundColor = hexToRGB(hex);
-    var red = backgroundColor['r'] * 1.15 < 255 ? backgroundColor['r'] * 1.15 : 255;
-    var green = backgroundColor['g'] * 1.15 < 255 ? backgroundColor['g'] * 1.15 : 255;
-    var blue = backgroundColor['b'] * 1.15 < 255 ? backgroundColor['b'] * 1.15 : 255;
-    var fieldColor = 'rgb(' + Math.round(red) + ',' + Math.round(green) + ',' + Math.round(blue) + ')';
-    for (var i = 0; i < inputField.length; i++) {
-        inputField[i].style.backgroundColor = fieldColor;
+    var allowedColors = ["#b4ffff", "#b4f0f0", "#b4ffc8", "#c5dbbf", "#ffedcc", "#fae6c8", "#ccb7cc", "#b4b4ff", "#b4c8ff", "#b8b6bd", "#f2f0c8", "#f0fadc", "#f2f0b4", "#e9fab4"];
+    if (allowedColors.includes(hex)) {
+        body.style.backgroundColor = hex;
+        var inputField = document.getElementsByTagName("input");
+        var backgroundColor = hexToRGB(hex);
+        var red = backgroundColor['r'] * 1.15 < 255 ? backgroundColor['r'] * 1.15 : 255;
+        var green = backgroundColor['g'] * 1.15 < 255 ? backgroundColor['g'] * 1.15 : 255;
+        var blue = backgroundColor['b'] * 1.15 < 255 ? backgroundColor['b'] * 1.15 : 255;
+        var fieldColor = 'rgb(' + Math.round(red) + ',' + Math.round(green) + ',' + Math.round(blue) + ')';
+        for (var i = 0; i < inputField.length; i++) {
+            inputField[i].style.backgroundColor = fieldColor;
+        }
+
+        $.ajax({
+            url: 'http://localhost:7001/Spring/form/switch', // url where to submit the request
+            type: "POST", // type of action POST || GET
+            dataType: 'json', // data type
+            data: hex, // post data || get data
+            success: function (data) {
+                alert('ok');
+            },
+            error: function (xhr, resp, text) {
+                console.log(xhr, resp, text);
+            }
+        });
+    }
+
+    else {
+        alert('Выбранный цвет недоступен, он будет установлен случайным образом');
+        var random = Math.round(Math.random() * 14);
+        var randomColor = allowedColors[random];
+        switchColor(randomColor);
     }
 
 }
@@ -75,21 +98,20 @@ function hexToRGB(hex) {
 }
 
 
-
 function searchViaAjax() {
     $.ajax({
         url: 'http://localhost:7001/Spring/form', // url where to submit the request
-        type : "POST", // type of action POST || GET
-        dataType : 'json', // data type
-        data : $("#search-form").serialize(), // post data || get data
-        success : function(data) {
+        type: "POST", // type of action POST || GET
+        dataType: 'json', // data type
+        data: $("#search-form").serialize(), // post data || get data
+        success: function (data) {
             // you can see the result from the console
             // tab of the developer tools
             console.log(data);
             $('#modalResponse').html(data.response);
             $('#myModal').modal('show');
         },
-        error: function(xhr, resp, text) {
+        error: function (xhr, resp, text) {
             console.log(xhr, resp, text);
         }
     });

@@ -3,19 +3,41 @@
 
 <log4j:configuration debug="false" xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-    <appender name="UserLogging" class="org.apache.log4j.RollingFileAppender">
+    <appender name="BaseLogging" class="org.apache.log4j.RollingFileAppender">
         <param name="Encoding" value="Cp866"/>
-        <param name="File" value="C:/Java/logs-searcher-spring.log"/>
+        <param name="File" value="C:/Java/logs-searcher-root.log"/>
         <param name="Append" value="true"/>
         <param name="MaxFileSize" value="10MB"/>
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%d{dd-MM-yyyy HH:mm:ss.SSS} - %5p - %X - %m%n" />
+            <param name="ConversionPattern" value="%d{dd-MM-yyyy HH:mm:ss.SSS} - %5p - %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="UserActionLogging" class="org.apache.log4j.RollingFileAppender">
+        <param name="Encoding" value="Cp866"/>
+        <param name="File" value="C:/Java/user-action.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="10MB"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd-MM-yyyy HH:mm:ss.SSS} - %5p - user - %X{username} - %m%n" />
         </layout>
     </appender>
 
     <root>
         <priority value="INFO"/>
-        <appender-ref ref="UserLogging" />
+        <appender-ref ref="BaseLogging" />
     </root>
+
+    <logger name="org.springframework" additivity="false">
+        <level value="off" />
+        <appender-ref ref="BaseLogging" />
+    </logger>
+
+    <logger name="ru.siblion.logsearcher.service" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="UserActionLogging"/>
+    </logger>
+
+
 
 </log4j:configuration>
