@@ -40,8 +40,8 @@ public class SearchResultManager implements Serializable {
         ResultLogs resultLogs;
         String excludedFiles = conf.getString("excludedFilesRegEx");
         List<String> correctLogsList = new ArrayList<>();
-        StringBuilder tempBuilder = new StringBuilder();
-        String writtenLog;
+        StringBuilder stringBuilder = new StringBuilder();
+        String completeLog;
         Pattern excludedLogs = Pattern.compile(excludedFiles);
         if (correctionCheckResult.getErrorCode() != 0) {
             searchInfoResult.setErrorCode(correctionCheckResult.getErrorCode());
@@ -61,13 +61,13 @@ public class SearchResultManager implements Serializable {
 
                                 while ((line = reader.readLine()) != null) {
                                     if (!line.endsWith("> ")) {
-                                        tempBuilder.append(line).append("\n");
+                                        stringBuilder.append(line).append("\n");
                                     } else {
-                                        tempBuilder.append(line).append("\n");
-                                        writtenLog = tempBuilder.toString();
-                                        tempBuilder = new StringBuilder();
-                                        if (isStringValid(writtenLog, searchInfo)) {
-                                            correctLogsList.add(writtenLog);
+                                        stringBuilder.append(line).append("\n");
+                                        completeLog = stringBuilder.toString();
+                                        stringBuilder = new StringBuilder();
+                                        if (isStringValid(completeLog, searchInfo)) {
+                                            correctLogsList.add(completeLog);
                                         }
                                     }
                                 }

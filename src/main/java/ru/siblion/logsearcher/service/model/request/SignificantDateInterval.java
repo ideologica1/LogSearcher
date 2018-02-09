@@ -5,6 +5,7 @@ import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
 
+import javax.xml.bind.annotation.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,6 +26,7 @@ public class SignificantDateInterval {
     public SignificantDateInterval() {
     }
 
+
     public Date getDateFrom() {
         return dateFrom;
     }
@@ -37,6 +39,7 @@ public class SignificantDateInterval {
 
         this.dateFrom = dateFrom;
     }
+
 
     public Date getDateTo() {
         return dateTo;
@@ -89,6 +92,7 @@ public class SignificantDateInterval {
         else
             this.dateToString = dateToString;
     }
+
 
     @Override
     public String toString() {

@@ -45,4 +45,5 @@ public class XMLModel implements Serializable {
     public String getApplicationName() {
         return applicationName;
     }
+
 }

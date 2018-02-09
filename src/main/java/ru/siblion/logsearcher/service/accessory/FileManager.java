@@ -110,7 +110,6 @@ public class FileManager {
 
     private void generateXML(String filePath) throws JAXBException, ConfigurationException {
 
-        System.out.println("what happened?");
         JAXBContext context = JAXBContext.newInstance(XMLModel.class);
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
