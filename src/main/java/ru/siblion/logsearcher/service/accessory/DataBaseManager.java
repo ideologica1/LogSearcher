@@ -84,7 +84,7 @@ public class DataBaseManager implements Serializable {
         }
     }
 
-    protected List<String> getFilteredExistingFiles(SearchInfo searchInfo)  {
+    protected List<String> extractFilteredExistingFiles(SearchInfo searchInfo)  {
         try {
             setConnection();
             List<String> filesName = new ArrayList<>();
@@ -111,7 +111,7 @@ public class DataBaseManager implements Serializable {
         }
     }
 
-    protected List<SignificantDateInterval> getDateIntervals(String fileName) {
+    protected List<SignificantDateInterval> extractDateIntervals(String fileName) {
 
         try {
             setConnection();

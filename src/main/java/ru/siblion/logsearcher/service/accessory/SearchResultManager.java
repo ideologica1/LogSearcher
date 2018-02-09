@@ -35,7 +35,7 @@ public class SearchResultManager implements Serializable {
     public SearchInfoResult searchLogs(SearchInfo searchInfo) throws ConfigurationException, IOException {
         searchInfoResult = new SearchInfoResult();
         String location = searchInfo.getLocation();
-        PropertiesConfiguration conf = new PropertiesConfiguration("C:/Java/LogsFinderEJB/src/main/resources/application.properties");
+        PropertiesConfiguration conf = new PropertiesConfiguration("application.properties");
         String[] serversList = conf.getStringArray(location);
         ResultLogs resultLogs;
         String excludedFiles = conf.getString("excludedFilesRegEx");
@@ -145,5 +145,6 @@ public class SearchResultManager implements Serializable {
         Date date = new Date(Long.parseLong(splittedLog[9]));
         return date;
     }
+
 }
 

@@ -88,7 +88,7 @@ public class FileManager {
     }
 
     public String generateFileAbsolutePath(String extension) throws ConfigurationException {
-        PropertiesConfiguration conf = new PropertiesConfiguration("C:/Java/LogsFinderEJB/src/main/resources/application.properties");
+        PropertiesConfiguration conf = new PropertiesConfiguration("application.properties");
         return conf.getString("created_files") + "logs_" + new Date().getTime() + "." + extension.toLowerCase();
     }
 
@@ -124,11 +124,11 @@ public class FileManager {
         byte[] XMLbytes = out.toByteArray();
         out.close();
         ByteArrayInputStream input = new ByteArrayInputStream(XMLbytes);
-        File xsltFile = new File("C:/Java/LogsFinderEJB/src/main/resources/templates/PDFtemplate.xsl");
+        File xsltFile = new File("C:/Java/LogsFinderSpring/src/main/resources/templates/PDFtemplate.xsl");
         // the XML file which provides the input
         StreamSource xmlSource = new StreamSource(input);
         // create an instance of fop factory
-        FopFactory fopFactory = FopFactory.newInstance(new File("C:/Java/LogsFinderEJB/src/main/resources/fopconf.xml"));
+        FopFactory fopFactory = FopFactory.newInstance(new File("C:/Java/LogsFinderSpring/src/main/resources/fopconf.xml"));
         // a user agent is needed for transformation
         FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
         // Setup output
@@ -147,6 +147,7 @@ public class FileManager {
             transformer.transform(xmlSource, res);
         } finally {
             outputStream.close();
+            input.close();
         }
     }
 
@@ -156,11 +157,11 @@ public class FileManager {
         byte[] XMLbytes = out.toByteArray();
         out.close();
         ByteArrayInputStream input = new ByteArrayInputStream(XMLbytes);
-        File xsltFile = new File("C:/Java/LogsFinderEJB/src/main/resources/templates/RTFtemplate.xsl");
+        File xsltFile = new File("C:/Java/LogsFinderSpring/src/main/resources/templates/RTFtemplate.xsl");
         // the XML file which provides the input
         StreamSource xmlSource = new StreamSource(input);
         // create an instance of fop factory
-        FopFactory fopFactory = FopFactory.newInstance(new File("C:/Java/LogsFinderEJB/src/main/resources/fopconf.xml"));
+        FopFactory fopFactory = FopFactory.newInstance(new File("C:/Java/LogsFinderSpring/src/main/resources/fopconf.xml"));
         // a user agent is needed for transformation
         FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
         // Setup output
@@ -179,6 +180,7 @@ public class FileManager {
             transformer.transform(xmlSource, res);
         } finally {
             outputStream.close();
+            input.close();
         }
 
     }
@@ -192,11 +194,14 @@ public class FileManager {
 
         try {
             TransformerFactory tf = TransformerFactory.newInstance();
-            Transformer tr = tf.newTransformer(new StreamSource("C:/Java/LogsFinderEJB/src/main/resources/templates/LOGtemplate.xsl"));
+            Transformer tr = tf.newTransformer(new StreamSource("C:/Java/LogsFinderSpring/src/main/resources/templates/LOGtemplate.xsl"));
             tr.transform(new StreamSource(input), new StreamResult(
                     new FileOutputStream(filePath)));
 
         } catch (Exception e) {
+        }
+        finally {
+            input.close();
         }
     }
 
@@ -209,11 +214,14 @@ public class FileManager {
 
         try {
             TransformerFactory tf = TransformerFactory.newInstance();
-            Transformer tr = tf.newTransformer(new StreamSource("C:/Java/LogsFinderEJB/src/main/resources/templates/HTMLtemplate.xsl"));
+            Transformer tr = tf.newTransformer(new StreamSource("C:/Java/LogsFinderSpring/src/main/resources/templates/HTMLtemplate.xsl"));
             tr.transform(new StreamSource(input), new StreamResult(
                     new FileOutputStream(filePath)));
 
         } catch (Exception e) {
+        }
+        finally {
+            input.close();
         }
     }
 
@@ -223,11 +231,11 @@ public class FileManager {
         byte[] XMLbytes = out.toByteArray();
         out.close();
         ByteArrayInputStream input = new ByteArrayInputStream(XMLbytes);
-        File xsltFile = new File("C:/Java/LogsFinderEJB/src/main/resources/templates/DOCtemplate.xsl");
+        File xsltFile = new File("C:/Java/LogsFinderSpring/src/main/resources/templates/DOCtemplate.xsl");
         // the XML file which provides the input
         StreamSource xmlSource = new StreamSource(input);
         // create an instance of fop factory
-        FopFactory fopFactory = FopFactory.newInstance(new File("C:/Java/LogsFinderEJB/src/main/resources/fopconf.xml"));
+        FopFactory fopFactory = FopFactory.newInstance(new File("C:/Java/LogsFinderSpring/src/main/resources/fopconf.xml"));
         // a user agent is needed for transformation
         FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
         // Setup output
@@ -246,6 +254,7 @@ public class FileManager {
             transformer.transform(xmlSource, res);
         } finally {
             outputStream.close();
+            input.close();
         }
 
     }
@@ -258,15 +267,15 @@ public class FileManager {
     public boolean fileSearch(SearchInfo searchInfo) throws SQLException, ParseException, ConfigurationException {
 
         List<SignificantDateInterval> searchInfoDateIntervals = searchInfo.getDateInterval();
-        List<String> filesName = dataBaseManager.getFilteredExistingFiles(searchInfo);
+        List<String> filesName = dataBaseManager.extractFilteredExistingFiles(searchInfo);
         List<SignificantDateInterval> existingFilesDateIntervals;
 
         if (!filesName.isEmpty()) {
             for (String fileName : filesName) {
-                existingFilesDateIntervals = dataBaseManager.getDateIntervals(fileName);
+                existingFilesDateIntervals = dataBaseManager.extractDateIntervals(fileName);
                 if (isIntervalsCovered(searchInfoDateIntervals, existingFilesDateIntervals) && !isCoveragePercentageExceed(searchInfoDateIntervals, existingFilesDateIntervals)) {
 
-                    PropertiesConfiguration conf = new PropertiesConfiguration("C:/Java/LogsFinderEJB/src/main/resources/application.properties");
+                    PropertiesConfiguration conf = new PropertiesConfiguration("C:/Java/LogsFinderSpring/src/main/resources/application.properties");
                     fileAbsolutePath = conf.getString("created_files") + fileName;
                     return true;
                 }
@@ -300,21 +309,21 @@ public class FileManager {
     }
 
     private boolean isCoveragePercentageExceed(List<SignificantDateInterval> request, List<SignificantDateInterval> response) {
-        long sumOfItervalsRequest = 0;
-        long sumOfItervalsResponse = 0;
+        long sumOfIntervalsRequest = 0;
+        long sumOfIntervalsResponse = 0;
         for (SignificantDateInterval significantDateIntervalRequest : request) {
             long requestDateFrom = significantDateIntervalRequest.getDateFrom().getTime();
             long requestDateTo = significantDateIntervalRequest.getDateTo().getTime();
-            sumOfItervalsRequest += (requestDateTo - requestDateFrom);
+            sumOfIntervalsRequest += (requestDateTo - requestDateFrom);
         }
 
         for (SignificantDateInterval significantDateIntervalResponse : response) {
             long responseDateFrom = significantDateIntervalResponse.getDateFrom().getTime();
             long responseDateTo = significantDateIntervalResponse.getDateTo().getTime();
-            sumOfItervalsResponse += (responseDateTo - responseDateFrom);
+            sumOfIntervalsResponse += (responseDateTo - responseDateFrom);
         }
 
-        float percetnageExceed = (float) sumOfItervalsResponse / sumOfItervalsRequest;
+        float percetnageExceed = (float) sumOfIntervalsResponse / sumOfIntervalsRequest;
         return (percetnageExceed > 1.1);
     }
 
