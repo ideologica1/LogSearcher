@@ -9,13 +9,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import ru.siblion.logsearcher.service.accessory.Validator;
 import ru.siblion.logsearcher.service.rest.ServiceConsumer;
-import ru.siblion.logsearcher.service.accessory.InputDataValidator;
+import ru.siblion.logsearcher.service.accessory.SearchInfoValidator;
 import ru.siblion.logsearcher.service.accessory.SearchInfoFactory;
 import ru.siblion.logsearcher.service.model.response.CorrectionCheckResult;
 import ru.siblion.logsearcher.service.model.response.LogSearchResult;
 import ru.siblion.logsearcher.service.model.request.SearchInfo;
 import ru.siblion.logsearcher.service.model.response.SearchInfoResult;
+import ru.siblion.logsearcher.util.Error;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -25,14 +27,13 @@ public class MainFormController {
 
 
     @Autowired
-    private InputDataValidator inputDataValidator;
+    private Validator searchInfoValidator;
 
     @Autowired
     private SearchInfoFactory searchInfoFactory;
 
     @Autowired
-    ServiceConsumer serviceConsumer;
-
+    private ServiceConsumer serviceConsumer;
 
     private Logger logger = Logger.getLogger(MainFormController.class);
 
@@ -42,48 +43,69 @@ public class MainFormController {
     }
 
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST, value = "create")
     @ResponseBody
-    public LogSearchResult getResults(Model model, HttpServletRequest request) throws ConfigurationException {
-
+    public LogSearchResult saveFoundLogs(Model model, HttpServletRequest request) throws ConfigurationException {
 
         logger.info(" started search process");
-
-
         SearchInfo searchInfo = searchInfoFactory.createSearchInfo(request);
+        CorrectionCheckResult correctionCheckResult = correctionCheck(searchInfo);
 
-        inputDataValidator.correctionCheck(searchInfo);
-        CorrectionCheckResult correctionCheckResult = inputDataValidator.getCorrectionCheckResult();
         if (correctionCheckResult.getErrorCode() == 0) {
-            if (!searchInfo.getRealization()) {
-
-                SearchInfoResult searchInfoResult = serviceConsumer.searchLogsSync(searchInfo);
-                //  model.addAttribute(searchInfoResult);
-                return null;
-            } else {
-
-                LogSearchResult logSearchResult = serviceConsumer.searchLogsAsync(searchInfo);
-                // model.addAttribute(logSearchResult);
-                return logSearchResult;
-            }
+            return serviceConsumer.searchLogsAsync(searchInfo);
         } else {
+
             logger.info(" has received warning \"search process was corrupted due to incorrect input data\"");
             LogSearchResult logSearchResult = new LogSearchResult();
             logSearchResult.setResponse(correctionCheckResult);
             return logSearchResult;
+
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "show")
+    public String showFoundLogs(Model model, HttpServletRequest request) {
+
+        logger.info(" started search process");
+        SearchInfo searchInfo = searchInfoFactory.createSearchInfo(request);
+        CorrectionCheckResult correctionCheckResult = correctionCheck(searchInfo);
+        SearchInfoResult searchInfoResult;
+
+        if (correctionCheckResult.getErrorCode() == 0) {
+            searchInfoResult = serviceConsumer.searchLogsSync(searchInfo);
+        } else {
+            searchInfoResult = new SearchInfoResult();
+            logger.info(" has received warning \"search process was corrupted due to incorrect input data\"");
+            long errorCode = correctionCheckResult.getErrorCode();
+            searchInfoResult.setErrorCode(errorCode);
+            searchInfoResult.setErrorMessage(Error.getErrorDescriptionByCode(errorCode));
         }
 
+        model.addAttribute(searchInfoResult);
+        return "results";
     }
 
 
-    @RequestMapping(value = "switch", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST, value = "switch")
     public void reportColorAlteration(@RequestBody String string) {
+
         logger.info(" switched form color to " + "#" + string.substring(3, 9));
+
+    }
+
+    private CorrectionCheckResult correctionCheck(SearchInfo searchInfo) {
+
+        Error foundError = searchInfoValidator.correctionCheck(searchInfo);
+        CorrectionCheckResult validCorrectionCheckResult = new CorrectionCheckResult();
+        if (foundError == null) validCorrectionCheckResult.setErrorCode(0);
+        else validCorrectionCheckResult.setErrorCode(foundError.getErrorCode());
+        return validCorrectionCheckResult;
+
     }
 
 
-    public void setInputDataValidator(InputDataValidator inputDataValidator) {
-        this.inputDataValidator = inputDataValidator;
+    public void setSearchInfoValidator(SearchInfoValidator searchInfoValidator) {
+        this.searchInfoValidator = searchInfoValidator;
     }
 
     public void setSearchInfoFactory(SearchInfoFactory searchInfoFactory) {

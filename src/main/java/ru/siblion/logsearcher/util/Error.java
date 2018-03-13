@@ -1,6 +1,9 @@
 package ru.siblion.logsearcher.util;
 
-public enum Errors {
+/**
+ * errors that could occur if input data is incorrect
+ */
+public enum Error {
     FROM_EXCEED_TO(1, "Начало временного интервала превышает конец."),
 
     FROM_EXCEED_PRESENT(18, "Начало временного интервала превышает текущий момент времени."),
@@ -17,7 +20,7 @@ public enum Errors {
     private final long errorCode;
     private final String errorDescription;
 
-    Errors (long errorCode, String errorDescription) {
+    Error(long errorCode, String errorDescription) {
         this.errorCode = errorCode;
         this.errorDescription = errorDescription;
     }
@@ -28,9 +31,9 @@ public enum Errors {
 
     public static String getErrorDescriptionByCode(long errorCode) {
         String temp = null;
-        for (Errors errors : Errors.values()) {
-            if (errors.getErrorCode() == errorCode) {
-                temp = errors.getErrorDescription();
+        for (Error error : Error.values()) {
+            if (error.getErrorCode() == errorCode) {
+                temp = error.getErrorDescription();
             }
 
         }

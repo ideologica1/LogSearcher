@@ -1,5 +1,6 @@
 package ru.siblion.logsearcher.service.accessory;
 
+import com.sun.istack.NotNull;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +11,17 @@ import ru.siblion.logsearcher.service.model.response.LogSearchResult;
 import ru.siblion.logsearcher.service.model.request.SearchInfo;
 import ru.siblion.logsearcher.service.model.response.ResultLogs;
 import ru.siblion.logsearcher.service.model.response.SearchInfoResult;
-import ru.siblion.logsearcher.util.LogsComparator;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * this class is responsible for searching logs in local files
+ */
 @Component
-public class SearchResultManager implements Serializable {
+public class FileLogSearcher implements LogSearcher, Serializable {
 
     @Autowired
     private CorrectionCheckResult correctionCheckResult;
@@ -29,36 +29,43 @@ public class SearchResultManager implements Serializable {
     @Autowired
     private LogSearchResult logSearchResult;
 
-    private SearchInfoResult searchInfoResult;
+    /**
+     * {@inheritDoc}
+     */
 
-
-    public SearchInfoResult searchLogs(SearchInfo searchInfo) throws ConfigurationException, IOException {
-        searchInfoResult = new SearchInfoResult();
+    public SearchInfoResult searchLogs(@NotNull SearchInfo searchInfo) {
+        SearchInfoResult searchInfoResult = new SearchInfoResult();
         String location = searchInfo.getLocation();
-        PropertiesConfiguration conf = new PropertiesConfiguration("application.properties");
-        String[] serversList = conf.getStringArray(location);
+        PropertiesConfiguration conf = null;
+        Pattern excludedFilesPattern = null;
+        try {
+            conf = new PropertiesConfiguration("application.properties");
+            String excludedFilesRegEx = conf.getString("excludedFilesRegEx");
+            excludedFilesPattern = Pattern.compile(excludedFilesRegEx);
+        } catch (ConfigurationException e) {
+            e.printStackTrace();
+        }
+        String[] servers = conf.getStringArray(location);
         ResultLogs resultLogs;
-        String excludedFiles = conf.getString("excludedFilesRegEx");
-        List<String> correctLogsList = new ArrayList<>();
-        StringBuilder stringBuilder = new StringBuilder();
-        String completeLog;
-        Pattern excludedLogs = Pattern.compile(excludedFiles);
         if (correctionCheckResult.getErrorCode() != 0) {
             searchInfoResult.setErrorCode(correctionCheckResult.getErrorCode());
             searchInfoResult.setErrorMessage(logSearchResult.getResponse());
         } else {
 
-            for (int i = 0; i < serversList.length; i++) {
-                String[] filesList = new File(serversList[i]).list();
+            for (String server : servers) {
+                String[] files = new File(server).list();
                 String line;
-                if (filesList != null) {
-                    for (int j = 0; j < filesList.length; j++) {
-                        Matcher matcher = excludedLogs.matcher(filesList[j]);
-                        if (matcher.matches())
+                if (files != null) {
+                    for (String fileName : files) {
+                        Matcher excludedFilesMatcher = excludedFilesPattern.matcher(fileName);
+                        if (excludedFilesMatcher.matches())
                             try (BufferedReader reader = new BufferedReader(
                                     new InputStreamReader(
-                                            new FileInputStream(serversList[i] + filesList[j]), StandardCharsets.UTF_8))) {
+                                            new FileInputStream(server + fileName), StandardCharsets.UTF_8))) {
 
+                                StringBuilder stringBuilder = new StringBuilder();
+                                String completeLog;
+                                Set<String> foundLogs = new HashSet<>();
                                 while ((line = reader.readLine()) != null) {
                                     if (!line.endsWith("> ")) {
                                         stringBuilder.append(line).append("\n");
@@ -66,25 +73,22 @@ public class SearchResultManager implements Serializable {
                                         stringBuilder.append(line).append("\n");
                                         completeLog = stringBuilder.toString();
                                         stringBuilder = new StringBuilder();
-                                        if (isStringValid(completeLog, searchInfo)) {
-                                            correctLogsList.add(completeLog);
+                                        if (isStringValid(completeLog, searchInfo)) { foundLogs.add(completeLog);
                                         }
                                     }
                                 }
-
-
                                 // установка значений resultLogs и добавление в лист логов
-                                for (int k = 0; k < correctLogsList.size(); k++) {
-                                    String[] splittedString = correctLogsList.get(k).split("> <");
+                                for (String foundLog : foundLogs) {
+                                    String[] splittedString = foundLog.split("> <");
                                     String content = splittedString[splittedString.length - 1];
                                     Date timeMoment = new Date(Long.parseLong(splittedString[9]));
                                     resultLogs = new ResultLogs();
                                     resultLogs.setContent(content);
-                                    resultLogs.setFileName(filesList[j]);
+                                    resultLogs.setFileName(fileName);
                                     resultLogs.setTimeMoment(timeMoment);
                                     searchInfoResult.addResultLogs(resultLogs);
                                 }
-                                correctLogsList = new ArrayList<>();
+                                foundLogs.clear();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -94,12 +98,16 @@ public class SearchResultManager implements Serializable {
             if (searchInfoResult.getResultLogsList().isEmpty()) {
                 searchInfoResult.setEmptyResultMessage("No records found.");
             }
-            searchInfoResult.getResultLogsList().sort(new LogsComparator());
+            searchInfoResult.getResultLogsList().sort((date1, date2) -> {
+                if (date1.getTimeMoment().after(date2.getTimeMoment())) return 1;
+                else if (date2.getTimeMoment().after(date1.getTimeMoment())) return -1;
+                else return 0;
+            });
         }
         return searchInfoResult;
     }
 
-    public SearchResultManager() {
+    public FileLogSearcher() {
     }
 
     private boolean isStringValid(String string, SearchInfo searchInfo) {
@@ -116,34 +124,23 @@ public class SearchResultManager implements Serializable {
         }
         return false;
 
-
     }
 
     private boolean isStringsSatisfyDateIntervals(long beginInterval, long endInterval, String log) {
 
         String[] splittedArray = log.split("> <");
-        if (Long.parseLong(splittedArray[9]) <= endInterval && Long.parseLong(splittedArray[9]) >= beginInterval) {
-            return true;
-        }
-        return false;
+        return Long.parseLong(splittedArray[9]) <= endInterval && Long.parseLong(splittedArray[9]) >= beginInterval;
+
     }
 
     private boolean isStringsSatisfyRegularExpression(String log, String regularExpression) {
-        if (regularExpression.isEmpty())
-            return true;
-        else {
+        if (regularExpression != null && !regularExpression.isEmpty()){
+
             Pattern pattern = Pattern.compile(regularExpression);
             Matcher matcher = pattern.matcher(log);
-            if (matcher.find())
-                return true;
-            return false;
+            return matcher.find();
         }
-    }
-
-    public Date exctractDate(String log) {
-        String[] splittedLog = log.split("> <");
-        Date date = new Date(Long.parseLong(splittedLog[9]));
-        return date;
+        else return true;
     }
 
 }

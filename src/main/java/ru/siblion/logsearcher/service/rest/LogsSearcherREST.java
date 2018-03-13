@@ -3,16 +3,16 @@ package ru.siblion.logsearcher.service.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.siblion.logsearcher.service.accessory.FileManager;
-import ru.siblion.logsearcher.service.accessory.SearchResultManager;
+import ru.siblion.logsearcher.service.accessory.LogSearcher;
 import ru.siblion.logsearcher.service.model.request.SearchInfo;
 import ru.siblion.logsearcher.service.model.response.LogSearchResult;
 import ru.siblion.logsearcher.service.model.response.SearchInfoResult;
 
 
 @RestController
-public class LogsSearcherREST {
+public class LogsSearcherREST implements ILogSearcher{
 
-    private SearchResultManager searchResultManager;
+    private LogSearcher logSearcher;
 
     private FileManager fileManager;
 
@@ -41,7 +41,7 @@ public class LogsSearcherREST {
             consumes = {"application/json","application/xml"})
     public @ResponseBody SearchInfoResult logSearchSync(@RequestBody SearchInfo searchInfo) {
         try {
-            return searchResultManager.searchLogs(searchInfo);
+            return logSearcher.searchLogs(searchInfo);
         }
 
         catch (Exception e) {
@@ -56,7 +56,6 @@ public class LogsSearcherREST {
         }
 
         catch (Exception e) {
-
             throw new RuntimeException();
         }
     }
@@ -76,8 +75,8 @@ public class LogsSearcherREST {
     }
 
     @Autowired
-    public void setSearchResultManager(SearchResultManager searchResultManager) {
-        this.searchResultManager = searchResultManager;
+    public void setFileLogSearcher(LogSearcher LogSearcher) {
+        this.logSearcher = LogSearcher;
     }
 
     @Autowired

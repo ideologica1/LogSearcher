@@ -2,29 +2,19 @@ package ru.siblion.logsearcher.service.accessory;
 
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
-import org.apache.fop.apps.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
-import org.xml.sax.SAXException;
+import ru.siblion.logsearcher.service.dao.DaoService;
+import ru.siblion.logsearcher.service.generator.CreatorFactory;
+import ru.siblion.logsearcher.service.generator.FileCreator;
 import ru.siblion.logsearcher.service.model.XMLModel;
 import ru.siblion.logsearcher.service.model.request.SearchInfo;
 import ru.siblion.logsearcher.service.model.request.SignificantDateInterval;
 import ru.siblion.logsearcher.service.model.response.CorrectionCheckResult;
 import ru.siblion.logsearcher.util.FileExtension;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.transform.Result;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.sax.SAXResult;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
-import java.io.*;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Date;
@@ -39,224 +29,45 @@ public class FileManager {
     private CorrectionCheckResult correctionCheckResult;
 
     @Autowired
-    private ru.siblion.logsearcher.service.model.XMLModel XMLModel;
+    private XMLModel XMLModel;
 
     @Autowired
-    private DataBaseManager dataBaseManager;
+    private DaoService daoService;
 
     @Autowired
-    SearchResultManager searchResultManager;
+    private LogSearcher fileLogSearcher;
 
     private String fileAbsolutePath;
+
+    @Autowired
+    private CreatorFactory creatorFactory;
 
 
     @Async("threadPoolTaskExecutor")
     public void generateFile(SearchInfo searchInfo) {
-      try {
-          XMLModel.setSearchInfo(searchInfo);
-          XMLModel.setSearchInfoResult(searchResultManager.searchLogs(searchInfo));
-          FileExtension fileExtension = searchInfo.getFileExtension();
-          String fileName = extractFileName(fileAbsolutePath);
-          dataBaseManager.recordCreatedFile(searchInfo, fileName);
-          if (correctionCheckResult.getErrorCode() == 0) {
-              switch (fileExtension) {
-                  case XML:
-                      generateXML(fileAbsolutePath);
-                      break;
-                  case PDF:
-                      generatePDF(fileAbsolutePath);
-                      break;
-                  case RTF:
-                      generateRTF(fileAbsolutePath);
-                      break;
-                  case LOG:
-                      generateLOG(fileAbsolutePath);
-                      break;
-                  case HTML:
-                      generateHTML(fileAbsolutePath);
-                      break;
-                  case DOC:
-                      generateDOC(fileAbsolutePath);
-                      break;
-
-              }
-          }
-      }
-      catch (Exception e) {
+        try {
+            XMLModel.setSearchInfo(searchInfo);
+            XMLModel.setSearchInfoResult(fileLogSearcher.searchLogs(searchInfo));
+            FileExtension fileExtension = searchInfo.getFileExtension();
+            String fileName = extractFileName(fileAbsolutePath);
+            daoService.saveCreatedFile(searchInfo, fileName);
+            FileCreator fileCreator = creatorFactory.getFileGenerator(fileExtension);
+            if (correctionCheckResult.getErrorCode() == 0) {
+                fileCreator.generateFile(fileAbsolutePath, XMLModel);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
-      }
+        }
     }
 
     public String generateFileAbsolutePath(String extension) throws ConfigurationException {
         PropertiesConfiguration conf = new PropertiesConfiguration("application.properties");
-        return conf.getString("created_files") + "logs_" + new Date().getTime() + "." + extension.toLowerCase();
+        return conf.getString("created_files_location") + "logs_" + new Date().getTime() + "." + extension.toLowerCase();
     }
 
     private String extractFileName(String absolutePath) {
         String[] splittedAbsolutePath = absolutePath.split("//");
         return splittedAbsolutePath[splittedAbsolutePath.length - 1];
-    }
-
-    private ByteArrayOutputStream getXMLasStream(XMLModel xmlModel) throws JAXBException {
-
-        JAXBContext context = JAXBContext.newInstance(XMLModel.class);
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        Marshaller marshaller = context.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        marshaller.marshal(XMLModel, out);
-        return out;
-
-    }
-
-    private void generateXML(String filePath) throws JAXBException, ConfigurationException {
-
-        JAXBContext context = JAXBContext.newInstance(XMLModel.class);
-        Marshaller marshaller = context.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        File file = new File(filePath);
-        marshaller.marshal(XMLModel, file);
-
-    }
-
-    private void generatePDF(String filePath) throws JAXBException, IOException, TransformerException, SAXException, ConfigurationException {
-
-        ByteArrayOutputStream out = getXMLasStream(XMLModel);
-        byte[] XMLbytes = out.toByteArray();
-        out.close();
-        ByteArrayInputStream input = new ByteArrayInputStream(XMLbytes);
-        File xsltFile = new File("C:/Java/LogsFinderSpring/src/main/resources/templates/PDFtemplate.xsl");
-        // the XML file which provides the input
-        StreamSource xmlSource = new StreamSource(input);
-        // create an instance of fop factory
-        FopFactory fopFactory = FopFactory.newInstance(new File("C:/Java/LogsFinderSpring/src/main/resources/fopconf.xml"));
-        // a user agent is needed for transformation
-        FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
-        // Setup output
-        OutputStream outputStream;
-        outputStream = new FileOutputStream(filePath);
-
-        try {
-            // Construct fop with desired output format
-            Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, outputStream);
-            // Setup XSLT
-            TransformerFactory factory = TransformerFactory.newInstance();
-            Transformer transformer = factory.newTransformer(new StreamSource(xsltFile));
-            // Resulting SAX events (the generated FO) must be piped through to FOP
-            Result res = new SAXResult(fop.getDefaultHandler());
-            // Start XSLT transformation and FOP processing, that's where the XML is first transformed to XSL-FO and then PDF is created
-            transformer.transform(xmlSource, res);
-        } finally {
-            outputStream.close();
-            input.close();
-        }
-    }
-
-    private void generateRTF(String filePath) throws IOException, JAXBException, TransformerException, SAXException {
-
-        ByteArrayOutputStream out = getXMLasStream(XMLModel);
-        byte[] XMLbytes = out.toByteArray();
-        out.close();
-        ByteArrayInputStream input = new ByteArrayInputStream(XMLbytes);
-        File xsltFile = new File("C:/Java/LogsFinderSpring/src/main/resources/templates/RTFtemplate.xsl");
-        // the XML file which provides the input
-        StreamSource xmlSource = new StreamSource(input);
-        // create an instance of fop factory
-        FopFactory fopFactory = FopFactory.newInstance(new File("C:/Java/LogsFinderSpring/src/main/resources/fopconf.xml"));
-        // a user agent is needed for transformation
-        FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
-        // Setup output
-        OutputStream outputStream;
-        outputStream = new FileOutputStream(filePath);
-
-        try {
-            // Construct fop with desired output format
-            Fop fop = fopFactory.newFop(MimeConstants.MIME_RTF, foUserAgent, outputStream);
-            // Setup XSLT
-            TransformerFactory factory = TransformerFactory.newInstance();
-            Transformer transformer = factory.newTransformer(new StreamSource(xsltFile));
-            // Resulting SAX events (the generated FO) must be piped through to FOP
-            Result res = new SAXResult(fop.getDefaultHandler());
-            // Start XSLT transformation and FOP processing, that's where the XML is first transformed to XSL-FO and then PDF is created
-            transformer.transform(xmlSource, res);
-        } finally {
-            outputStream.close();
-            input.close();
-        }
-
-    }
-
-    private void generateLOG(String filePath) throws IOException, JAXBException, TransformerException, SAXException {
-
-        ByteArrayOutputStream out = getXMLasStream(XMLModel);
-        byte[] XMLbytes = out.toByteArray();
-        out.close();
-        ByteArrayInputStream input = new ByteArrayInputStream(XMLbytes);
-
-        try {
-            TransformerFactory tf = TransformerFactory.newInstance();
-            Transformer tr = tf.newTransformer(new StreamSource("C:/Java/LogsFinderSpring/src/main/resources/templates/LOGtemplate.xsl"));
-            tr.transform(new StreamSource(input), new StreamResult(
-                    new FileOutputStream(filePath)));
-
-        } catch (Exception e) {
-        }
-        finally {
-            input.close();
-        }
-    }
-
-    private void generateHTML(String filePath) throws IOException, JAXBException, TransformerException, SAXException {
-
-        ByteArrayOutputStream out = getXMLasStream(XMLModel);
-        byte[] XMLbytes = out.toByteArray();
-        out.close();
-        ByteArrayInputStream input = new ByteArrayInputStream(XMLbytes);
-
-        try {
-            TransformerFactory tf = TransformerFactory.newInstance();
-            Transformer tr = tf.newTransformer(new StreamSource("C:/Java/LogsFinderSpring/src/main/resources/templates/HTMLtemplate.xsl"));
-            tr.transform(new StreamSource(input), new StreamResult(
-                    new FileOutputStream(filePath)));
-
-        } catch (Exception e) {
-        }
-        finally {
-            input.close();
-        }
-    }
-
-    private void generateDOC(String filePath) throws IOException, JAXBException, TransformerException, SAXException {
-
-        ByteArrayOutputStream out = getXMLasStream(XMLModel);
-        byte[] XMLbytes = out.toByteArray();
-        out.close();
-        ByteArrayInputStream input = new ByteArrayInputStream(XMLbytes);
-        File xsltFile = new File("C:/Java/LogsFinderSpring/src/main/resources/templates/DOCtemplate.xsl");
-        // the XML file which provides the input
-        StreamSource xmlSource = new StreamSource(input);
-        // create an instance of fop factory
-        FopFactory fopFactory = FopFactory.newInstance(new File("C:/Java/LogsFinderSpring/src/main/resources/fopconf.xml"));
-        // a user agent is needed for transformation
-        FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
-        // Setup output
-        OutputStream outputStream;
-        outputStream = new FileOutputStream(filePath);
-
-        try {
-            // Construct fop with desired output format
-            Fop fop = fopFactory.newFop(MimeConstants.MIME_RTF_ALT1, foUserAgent, outputStream);
-            // Setup XSLT
-            TransformerFactory factory = TransformerFactory.newInstance();
-            Transformer transformer = factory.newTransformer(new StreamSource(xsltFile));
-            // Resulting SAX events (the generated FO) must be piped through to FOP
-            Result res = new SAXResult(fop.getDefaultHandler());
-            // Start XSLT transformation and FOP processing, that's where the XML is first transformed to XSL-FO and then PDF is created
-            transformer.transform(xmlSource, res);
-        } finally {
-            outputStream.close();
-            input.close();
-        }
-
     }
 
     public String getFileAbsolutePath() {
@@ -267,16 +78,16 @@ public class FileManager {
     public boolean fileSearch(SearchInfo searchInfo) throws SQLException, ParseException, ConfigurationException {
 
         List<SignificantDateInterval> searchInfoDateIntervals = searchInfo.getDateInterval();
-        List<String> filesName = dataBaseManager.extractFilteredExistingFiles(searchInfo);
+        List<String> filesName = daoService.getFilteredExistingFiles(searchInfo);
         List<SignificantDateInterval> existingFilesDateIntervals;
 
         if (!filesName.isEmpty()) {
             for (String fileName : filesName) {
-                existingFilesDateIntervals = dataBaseManager.extractDateIntervals(fileName);
+                existingFilesDateIntervals = daoService.getDateIntervals(fileName);
                 if (isIntervalsCovered(searchInfoDateIntervals, existingFilesDateIntervals) && !isCoveragePercentageExceed(searchInfoDateIntervals, existingFilesDateIntervals)) {
 
                     PropertiesConfiguration conf = new PropertiesConfiguration("C:/Java/LogsFinderSpring/src/main/resources/application.properties");
-                    fileAbsolutePath = conf.getString("created_files") + fileName;
+                    fileAbsolutePath = conf.getString("created_files_location") + fileName;
                     return true;
                 }
             }
@@ -331,35 +142,21 @@ public class FileManager {
         this.fileAbsolutePath = absolutePath;
     }
 
-    public CorrectionCheckResult getCorrectionCheckResult() {
-        return correctionCheckResult;
-    }
 
     public void setCorrectionCheckResult(CorrectionCheckResult correctionCheckResult) {
         this.correctionCheckResult = correctionCheckResult;
-    }
-
-    public ru.siblion.logsearcher.service.model.XMLModel getXMLModel() {
-        return XMLModel;
     }
 
     public void setXMLModel(ru.siblion.logsearcher.service.model.XMLModel XMLModel) {
         this.XMLModel = XMLModel;
     }
 
-    public DataBaseManager getDataBaseManager() {
-        return dataBaseManager;
+    public void setDaoService(DaoService daoService) {
+        this.daoService = daoService;
     }
 
-    public void setDataBaseManager(DataBaseManager dataBaseManager) {
-        this.dataBaseManager = dataBaseManager;
-    }
 
-    public SearchResultManager getSearchResultManager() {
-        return searchResultManager;
-    }
-
-    public void setSearchResultManager(SearchResultManager searchResultManager) {
-        this.searchResultManager = searchResultManager;
+    public void setFileLogSearcher(LogSearcher fileLogSearcher) {
+        this.fileLogSearcher = fileLogSearcher;
     }
 }

@@ -1,7 +1,8 @@
-package ru.siblion.logsearcher.service.accessory;
+package ru.siblion.logsearcher.service.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 import ru.siblion.logsearcher.service.model.request.SearchInfo;
 import ru.siblion.logsearcher.service.model.request.SignificantDateInterval;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class DataBaseManager implements Serializable {
+public class DataBaseManager implements Serializable, DaoService {
 
     @Autowired
     private DataSource dataSource;
@@ -31,7 +32,7 @@ public class DataBaseManager implements Serializable {
         connection.close();
     }
 
-    protected void recordCreatedFile(SearchInfo searchInfo, String name) {
+    public void saveCreatedFile(SearchInfo searchInfo, String name) {
         try {
             setConnection();
             String addFileQuery = "INSERT INTO createdfiles"
@@ -62,7 +63,7 @@ public class DataBaseManager implements Serializable {
 
     }
 
-    protected void removeCreatedFile(String fileName) {
+    public void removeCreatedFile(String fileName) {
         try {
             setConnection();
             String removeOutdatedFileQuery = "DELETE FROM dateintervals "
@@ -84,7 +85,7 @@ public class DataBaseManager implements Serializable {
         }
     }
 
-    protected List<String> extractFilteredExistingFiles(SearchInfo searchInfo)  {
+    public List<String> getFilteredExistingFiles(SearchInfo searchInfo)  {
         try {
             setConnection();
             List<String> filesName = new ArrayList<>();
@@ -111,7 +112,7 @@ public class DataBaseManager implements Serializable {
         }
     }
 
-    protected List<SignificantDateInterval> extractDateIntervals(String fileName) {
+    public List<SignificantDateInterval> getDateIntervals(String fileName) {
 
         try {
             setConnection();
@@ -136,6 +137,7 @@ public class DataBaseManager implements Serializable {
             return null;
         }
     }
+
 
 
     public DataSource getDataSource() {

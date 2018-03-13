@@ -49,6 +49,26 @@ public class ResultLogs {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ResultLogs that = (ResultLogs) o;
+
+        if (timeMoment != null ? !timeMoment.equals(that.timeMoment) : that.timeMoment != null) return false;
+        if (FileName != null ? !FileName.equals(that.FileName) : that.FileName != null) return false;
+        return Content != null ? Content.equals(that.Content) : that.Content == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = timeMoment != null ? timeMoment.hashCode() : 0;
+        result = 31 * result + (FileName != null ? FileName.hashCode() : 0);
+        result = 31 * result + (Content != null ? Content.hashCode() : 0);
+        return result;
+    }
+
     public ResultLogs() {
     }
 }

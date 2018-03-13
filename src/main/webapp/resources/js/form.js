@@ -99,22 +99,22 @@ function hexToRGB(hex) {
 
 
 function searchViaAjax() {
-    $.ajax({
-        url: 'http://localhost:7001/Spring/form', // url where to submit the request
-        type: "POST", // type of action POST || GET
-        dataType: 'json', // data type
-        data: $("#search-form").serialize(), // post data || get data
-        success: function (data) {
-            // you can see the result from the console
-            // tab of the developer tools
-            console.log(data);
-            $('#modalResponse').html(data.response);
-            $('#myModal').modal('show');
-        },
-        error: function (xhr, resp, text) {
-            console.log(xhr, resp, text);
-        }
-    });
+        $.ajax({
+            url: 'http://localhost:7001/Spring/form/create', // url where to submit the request
+            type: "POST", // type of action POST || GET
+            dataType: 'json', // data type
+            data: $("#search-form").serialize(), // post data || get data
+            success: function (data) {
+                // you can see the result from the console
+                // tab of the developer tools
+                console.log(data);
+                $('#modalResponse').html(data.response);
+                $('#myModal').modal('show');
+            },
+            error: function (xhr, resp, text) {
+                console.log(xhr, resp, text);
+            }
+        });
 }
 
 window.onload = function () {

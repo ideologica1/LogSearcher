@@ -12,4 +12,9 @@ public class LoginPageController {
     public String showIndexPage() {
         return "login";
     }
+
+    @RequestMapping(value = {"/", "/login"}, method = RequestMethod.POST)
+    public String showIndexPages() {
+        return "login";
+    }
 }

@@ -30,10 +30,7 @@ public class SearchInfoFactory implements Serializable {
         searchInfo.setRegularExpression(request.getParameter("regex"));
         String[] realization = request.getParameterValues("realization");
         searchInfo.setRealization(Boolean.parseBoolean(realization[0]));
-      /*  if (request.getParameter("realization") != null) {
-            searchInfo.setRealization(true);
-        }
-        else searchInfo.setRealization(false); */
+
         String[] datesFrom = request.getParameterValues("dateFrom");
         String[] datesTo = request.getParameterValues("dateTo");
         for (int i = 0; i < datesFrom.length; i++) {
